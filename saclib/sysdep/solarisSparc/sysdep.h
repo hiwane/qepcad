@@ -3,3 +3,7 @@
 #endif
 #undef _LITTLE_ENDIAN_
 #define _SPARC_SOLARIS_
+#define __WORDSIZE 32
+
+#include <ucontext.h>
+

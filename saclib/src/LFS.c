@@ -16,7 +16,7 @@ Word LFS(s)
        const char *s;
 {
        Word L,i,l;
-       char *p;
+       const char *p;
 
 Step1: /* Make a list from the string s. */
        L =NIL;

@@ -1,9 +1,9 @@
-#! /bin/csh
+#!/bin/bash
 
-if ($#argv == 0) then
+if [ $# -eq 0 ] ; then
   perl $saclib/bin/mksysdep.pl
-endif
-if ($#argv == 1) then
+fi
+if [ $# -eq 1 ] ; then
   perl $saclib/bin/mksysdep.pl $1
-endif
+fi
 

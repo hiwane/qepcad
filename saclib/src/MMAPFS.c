@@ -28,19 +28,19 @@ Word MMAPFS(p,A,B,d)
 Step1: /* A irreducible. */
        Ap = MAPCOPY(A);
        L = NIL;
-       L = COMP((Word)Ap,L);
-       r = LENGTH(B);
+       L = PTRCOMP(Ap,L);
+       r = PTRLENGTH(B);
        if (r == 1)
 	  goto Return;
 
 Step2: /* Factorize. */
-       Bp = RED(B);
+       Bp = PTRRED(B);
        k = 1;
        do {
 	  Lp = NIL;
-	  ADV(Bp,(Word *)&B1,&Bp);
+	  PTRADV(Bp,&B1,&Bp);
 	  do {
-	     ADV(L,(Word *)&A1,&L);
+	     PTRADV(L,&A1,&L);
 	     e = MAPDEG(A1);
 	     if (e > d) {
 		s = 0;
@@ -55,7 +55,7 @@ Step2: /* Factorize. */
 			 s = 1;
 			 MAPFREE(C); }
 		      else {
-			 Lp = COMP((Word)C,Lp);
+			 Lp = PTRCOMP(C,Lp);
 			 Q = MAPGET(MAPDEG(A1)-MAPDEG(C));
 			 MMAPQR(p,A1,C,Q);
 			 T = A1;
@@ -63,7 +63,7 @@ Step2: /* Factorize. */
 			 MAPFREE(T);
 			 k++;
 			 if (k == r) {
-			    Lp = COMP((Word)A1,Lp);
+			    Lp = PTRCOMP(A1,Lp);
 			    L = CONC(Lp,L);
 			    goto Return; }
 			 e = MAPDEG(A1);
@@ -72,7 +72,7 @@ Step2: /* Factorize. */
 		   MAPCF(B1,0) = (MAPCF(B1,0) + 1) % p;
 		   i++;	}
 		while (i != p && s != 1); }
-	     Lp = COMP((Word)A1,Lp); }
+	     Lp = PTRCOMP(A1,Lp); }
 	  while (L != NIL);
 	  L = Lp; }
        while (1);

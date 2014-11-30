@@ -32,10 +32,10 @@ Step2: /* Generate null space basis and convert to polynomials. */
        N = MMAMNSB(p,n,Q);
        B = NIL;
        do {
-	  ADV(N,(Word *)&N1,&N);
+	  PTRADV(N,&N1,&N);
 	  B1 = MAPFV(n,N1);
 	  FREEARRAY(N1);
-	  B = COMP((Word)B1,B); }
+	  B = PTRCOMP(B1,B); }
        while (N != NIL);
 
 Step3: /* Factorize. */
@@ -44,7 +44,7 @@ Step3: /* Factorize. */
 Step4: /* Convert to lists. */
        L = NIL;
        do {
-	  ADV(Lp,(Word *)&L1,&Lp);
+	  PTRADV(Lp,&L1,&Lp);
 	  L = COMP(MUPFMAP(L1),L);
 	  MAPFREE(L1); }
        while (Lp != NIL);
@@ -53,7 +53,7 @@ Step5: /* Free arrays. */
        MAPFREE(Ap);
        FREEMATRIX(Q,n);
        do {
-	  ADV(B,(Word *)&B1,&B);
+	  PTRADV(B,&B1,&B);
 	  MAPFREE(B1); }
        while(B != NIL);
 

@@ -15,8 +15,8 @@ void GCGLOBAL(p)
        Word *p;
 {
 Step1: /* Add. */
-       GCGLOBALS = COMP((Word)p,GCGLOBALS);
+  GCGLOBALS = PTRCOMP(p,GCGLOBALS);
 
 Return: /* Prepare for return. */
-       return;
+  return;
 }

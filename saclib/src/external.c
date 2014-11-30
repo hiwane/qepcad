@@ -11,17 +11,16 @@
 
 /* Version. */
 
-char SACLIBVERSION[] = "SACLIB 2.1";
+char SACLIBVERSION[] = "SACLIB 2.2.5";
 
 
 /* List processing */
-
 Word AVAIL;
 char *BACSTACK;
 Word GCC = 0;
 Word GCCC = 0;
-Word GCAC = 0;
 Word GCGLOBALS = BETA;
+Word GCAC = 0;
 Word GCM = 0;
 Word NU = NU_;
 Word RHO = RHO_;

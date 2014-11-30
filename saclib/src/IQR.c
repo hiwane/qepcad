@@ -11,7 +11,7 @@ Outputs
   R     : the remainder A - B * Q.
 ===========================================================================*/
 #include "saclib.h"
-#include <malloc.h>
+#include <stdlib.h>
 #define IQR_SIZE 100
 
 void IQR(A,B, Q_,R_)

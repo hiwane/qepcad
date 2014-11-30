@@ -48,7 +48,7 @@ Step2: /* Compute A_k. */
 	     MAPCF(W,1) = w1;
 	  D = MMAPGCD(p,W,C);
 	  if (MAPDEG(D) > 0) {
-	     L1 = LIST2(k,(Word)D);
+	    L1 = COMP(k,PTRLIST1(D));
 	     L = COMP(L1,L);
 	     Cp = MAPGET(MAPDEG(C)-MAPDEG(D));
 	     MMAPQR(p,C,D,Cp);
@@ -72,7 +72,7 @@ Step2: /* Compute A_k. */
 	     MAPDEG(B) = d; }
 	  else {
 	     if (e > 0) {
-		L1 = LIST2(e,(Word)C);
+	       L1 = COMP(e,PTRLIST1(C));
 		L = COMP(L1,L); }
 	     else
 		MAPFREE(C);
@@ -84,7 +84,8 @@ Step3: /* Convert to lists. */
        Lp = NIL;
        do {
 	  ADV(L,&L1,&L);
-	  ADV2(L1,&e,(Word *)&C,&L1);
+	  ADV(L1,&e,&L1);
+	  PTRADV(L1,&C,&L1);
 	  A1 = MUPFMAP(C);
 	  MAPFREE(C);
 	  Lp = COMP(LIST2(e,A1),Lp); }

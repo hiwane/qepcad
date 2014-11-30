@@ -1,4 +1,4 @@
-#!/bin/csh
+#!/bin/bash
 
 echo "Installing solarisSparc system dependent files ..."
 'cp' -f flush.s GC.c  get_pointers.s $saclib/src/

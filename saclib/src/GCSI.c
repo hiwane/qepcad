@@ -33,6 +33,14 @@ Step1: /* Setup. */
        }
        T1 = CLOCK();
 
+Step3: /* Mark the global variables. */
+       L = GCGLOBALS; 
+       while (L != NIL) {
+         c = *((Word *)PTRFIRST(L));
+	 if ((ISLIST(c) || ISGCA(c)) && !ISNIL(c))  MARK(c);
+	 L = PTRRED(L);
+       }
+
 Step2: /* Mark the cells in the GCGLOBALS list. */
        L = GCGLOBALS; 
        while (L != NIL) {
@@ -41,13 +49,17 @@ Step2: /* Mark the cells in the GCGLOBALS list. */
 	 L = I;
        }
 
-Step3: /* Mark the global variables. */
-       L = GCGLOBALS; 
-       while (L != NIL) {
-         c = *((Word *)FIRST(L));
-	 if ((ISLIST(c) || ISGCA(c)) && !ISNIL(c))  MARK(c);
-	 L = -RED(L);
-       }
+/* Step3: /\* Mark the global variables. *\/ */
+/*        L = GCGLOBALS;  */
+/*        while (L != NIL) { */
+/*          c = *(PTRFIRST(L)); */
+/* 	 if ((ISLIST(c) || ISGCA(c)) && !ISNIL(c))  MARK(c); */
+/* #if __WORDSIZE == 64 */
+/* 	 L = -RED(L); L = -RED(L); L = -RED(L); L = -RED(L);  */
+/* #else /\* Assumes 32-bit pointers. *\/ */
+/* 	 L = -RED(L); L = -RED(L);  */
+/* #endif */
+/*        } */
 
 Step4: /* Mark the cells accessible from the system stack. */
        if (((BACSTACK - EACSTACK) % s) != 0)

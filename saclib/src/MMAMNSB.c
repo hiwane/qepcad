@@ -48,7 +48,7 @@ Step3: /* Produce basis vector. */
 		   B[j] = MATELT(M,k,h);
 		else 
 		   B[j] = 0; } }
-	  L = COMP((Word)B,L);
+	  L = PTRCOMP(B,L);
 	  goto Step7; }
 
 Step4: /* Update pivot record. */

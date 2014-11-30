@@ -3,5 +3,5 @@
 #endif
 #undef _BIG_ENDIAN_
 #define _X86_LINUX_
-#define __WORDSIZE 32
+#define __WORDSIZE 64
 

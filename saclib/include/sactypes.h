@@ -8,7 +8,6 @@
 
 #include "sacsys.h"
 
-
 typedef struct {Word next; Word flag; Word len; Word *array;} GCArray;
 
 #define BDigit  Word

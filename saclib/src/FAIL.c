@@ -40,8 +40,10 @@ Step2: /* Failures from the SACLIB library. */
          {
          /*  Note that this step is NOT portable since we are assuming that
              pointers fit into integers. */
-         SWRITE("BACSTACK = "); GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
-         SWRITE("EACSTACK = "); GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
+	   SWRITE("BACSTACK = "); fprintf(stderr,"%p\n",va_arg(argPtr,char *));
+	   //GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
+	   SWRITE("EACSTACK = "); fprintf(stderr,"%p\n",va_arg(argPtr,char *));
+	   //GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
          goto Abort;
          }
 

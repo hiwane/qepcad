@@ -15,10 +15,14 @@ Saclib2.2
 
    a) create an environment variable "saclib" and set it to the
       absolute path to the root directory of your installation.
-      Ex: 
+
       Using the tcsh shell you might do something like this:
 
       setenv saclib /home/charlie/saclib2.2
+
+      Using bash you might do something like this:
+
+      saclib=/home/charlie/saclib2.2 ; export saclib
 
    b) Give the following commands:
 

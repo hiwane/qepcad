@@ -12,6 +12,7 @@
 typedef int     Word;
 
 /* Words are 32 bits. */
+#define BETALENGTH 29 /* BETA is 29 bits */
 #define BETA    0x20000000 
 #define BETA1   0x1fffffff   /* BETA - 1 */
 #define BETA2   0x10000000   /* BETA / 2 */

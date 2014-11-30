@@ -8,7 +8,6 @@
 /*            Include                      */
 /* ----------------------------------------*/
 #include <math.h>
-#include <ucontext.h>
 
 #include "sysdep.h"
 
@@ -18,6 +17,10 @@
 
 #ifdef _X86_LINUX_
 #include <ieee754.h>
+#include <fenv.h>
+#endif
+
+#ifdef _MAC_OSX_
 #include <fenv.h>
 #endif
 
@@ -71,6 +74,12 @@ typedef union {
 
 /* Linux */
 #ifdef _X86_LINUX_
+#define rounddown() fesetround(FE_DOWNWARD)
+#define roundup() fesetround(FE_UPWARD)
+#endif
+
+/* MAC OSX */
+#ifdef _MAC_OSX_
 #define rounddown() fesetround(FE_DOWNWARD)
 #define roundup() fesetround(FE_UPWARD)
 #endif

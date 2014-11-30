@@ -14,7 +14,7 @@ Header file for SACLIB macro definitions
 ---------------------------------------------------------------------------*/
 #define SACMAJVERS 2
 #define SACMINVERS 2
-#define SACREVVERS 1
+#define SACREVVERS 4
 
 /*---------------------------------------------------------------------------
 		Macros that are always defined.
@@ -37,7 +37,6 @@ Header file for SACLIB macro definitions
 #define maxm(a,b)      (((a) > (b)) ? (a) : (b))
 #define minm(a,b)      (((a) < (b)) ? (a) : (b))
 #define signm(a)       ((a) > 0 ? 1 : ((a) < 0 ? -1 : 0))
-
 
 /*---------------------------------------------------------------------------
 			     Arrays.

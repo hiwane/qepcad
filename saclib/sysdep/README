@@ -11,3 +11,7 @@ Saclib 2.2 & higher system dependent files & configuration
    system in $saclib/sysdep, and you need to modify
    $saclib/bin/sconf to recognize your target system
    and call the appropriate install.
+
+NOTE: The macosX86 port is for Mac OS X on x86 in 32-bit
+      mode.  Presumably, the port to 64-bit Mac OS X wouldn't
+      be too hard given the 64-bit Linux on x86 port. 
