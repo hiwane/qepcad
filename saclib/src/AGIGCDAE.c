@@ -18,11 +18,6 @@ BDigit **AGIGCDAE(A,B)
 	BDigit d,dp,h,k,kp,M,m,N,n,np,p,t;
 	BDigit d1,d2,e,e1,e2,f1,f2,q1,q2,r1,r2;
 
-BDigit g,i;
-BDigit j,*W,*X;
-BDigit **S;
-BDigit I,P,T,V;
-
 Step1: /* Set the precision. */
 	d = 8;
 

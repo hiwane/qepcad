@@ -23,9 +23,9 @@ Word IUPRB(A)
 
 Step1: /* Initialize. */
        ADV2(A,&n,&a,&Ap);
-       if (Ap == NIL) {
-	  h = -1;
-	  goto Step3; }
+       h = -1;
+       if (Ap == NIL)
+	  goto Step3;
        ab = IABSF(a);
        m = ILOG2(ab);
        t = 0;

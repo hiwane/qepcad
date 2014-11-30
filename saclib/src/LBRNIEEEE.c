@@ -66,6 +66,7 @@ Step4: /* a double-precision. */
 	   s = 0;
 	k = PDLOG2(a2);
 	if (k > 24) {
+	   n = 0;
 	   t = 2;
 	   goto Return; }
 	kp = ZETA - k;

@@ -38,8 +38,10 @@ Step1: /* Initialize. */
        P = NIL;
 
 Step2: /* Compute Gh_{i+2}. */
-       if (G2 == 0)
-	  goto Step3;
+       if (G2 == 0) {
+	  Gh3 = 0;
+	  n3 = 0;
+	  goto Step3; }
        Gh3 = IPPSR(r,G1,G2);
        n3 = PDEG(Gh3);
        if (Gh3 == 0)

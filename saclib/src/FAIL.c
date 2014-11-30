@@ -15,17 +15,17 @@ Side effects
 #include "saclib.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 
 #ifdef __STDC__
 void FAIL(const char *algName, const char *msg,...)
 #else
-void FAIL(algName,msg)
+void FAIL(algName,msg) __noreturn
        const char *algName;
        const char *msg;
 #endif
 {
        va_list argPtr;
-       extern int strcmp();
 
 Step1: /* Basic message. */
        SWRITE("\n\n");

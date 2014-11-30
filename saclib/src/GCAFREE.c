@@ -10,11 +10,11 @@ Side effects
   The array represented by A is deallocated, the cell is linked to GCAAVAIL.
 ======================================================================*/
 #include "saclib.h"
+#include <stdlib.h>
 
 void GCAFREE(A)
        Word A;
 {
-       extern void free();
        /* hide algorithm */
 
 Step1: /* Test for illegal GCA handle. */

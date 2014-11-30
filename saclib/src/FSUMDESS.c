@@ -47,6 +47,8 @@ Step3: /* Determine the denormalizing shift amount. */
 	rp = ZETA - r;
 
 Step4: /* Add mantissas, case q = 0. */
+	t = 0;
+	ap = 0;
 	if (q > 0)
 	   goto Step5;
 	cb = Ap[p+2] + (Bp[p+2] >> r);

@@ -18,8 +18,7 @@ Word IPBEZM(r,A,B)
 	Word A,B;
 {
 	BDigit a,b,e,k,m,n;
-	Word Ab,Ap,Bb,Bp,C,D,E,L,L2,Lp,M;
-	Word V;
+	Word Ab,Ap,Bb,Bp,C,D,E,L,L2,M;
 
 Step1: /* Get the degrees, m and n. */
 	m = PDEG(A);

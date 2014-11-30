@@ -25,9 +25,8 @@ void HIPVCHT(n,A, v_,t_)
 	interval *A;
 	BDigit *v_,*t_;
 {
-	interval a,*B,*C;
+	interval *B,*C;
 	BDigit t,v;
-	double b;
 
 Step1: /* Compute B(x). */
 	FPCATCH();
@@ -40,6 +39,7 @@ Step2: /* Compute C(x). */
 	if (FPCHECK() == 1) {
 	   FPCATCH();
 	   FREEARRAY(C);
+	   v = 0;
 	   t = 1;
 	   goto Return; }
 

@@ -16,7 +16,7 @@ Outputs
 Word IPPVED(r,A)
        Word r,A;
 {
-       Word Ed,Ap,rp,E,Es,Ep,a,d;
+       Word Ap,rp,E,Es,Ep,a,d;
 
 Step1: /* r = 1. */
        Ap = A;

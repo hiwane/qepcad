@@ -19,7 +19,7 @@ void ANDWRITE(M,I,n)
 
        Word M,I,n;
 {
-       Word J,R,Mp,K;
+       Word J,R,K;
        Word a,a1,a2,b,b1,b2,d,d1,d2,e,f,m;
        Word N;
 

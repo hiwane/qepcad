@@ -14,7 +14,7 @@ Output
 Word *MAPMON(p,A)
 	BDigit p,*A;
 {
-	BDigit ap,b,*B,i,n;
+	BDigit ap,*B,i,n;
 
 Step1: /* Get array for B. */
         n = MAPDEG(A);
@@ -22,7 +22,6 @@ Step1: /* Get array for B. */
 
 Step2: /* Compute the inverse of the leading coefficient. */
 	ap = MDINV(p,MAPLDCF(A));
-	b = MDPROD(p,ap,A[0]);
 
 Step3: /* Store the degree and leading coefficients of B. */
 	B[-1] = n;

@@ -16,7 +16,7 @@ Output
 Word MAIPDM(r,M)
         Word r,M;
 {
-        Word b,b1,b11,bp,D,Ds,M1,M11,Mp,Ms,n,P,Q,p,pp;
+        Word b,b1,b11,bp,D,Ds,M1,M11,Mp,Ms,P,Q,p,pp;
 
 Step1: /* Matrix of order 1. */
         if (RED(M) == NIL) {
@@ -24,7 +24,6 @@ Step1: /* Matrix of order 1. */
            goto Return; }
 
 Step2: /* Compute a coefficient bound. */
-        n = LENGTH(M);
         Mp = M;
         b = 1;
         do {

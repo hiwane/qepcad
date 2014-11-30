@@ -140,6 +140,8 @@ Step10: /* Determine sticky bit if needed. */
 	   t = 0;
          else
 	   t = 1; }
+       else
+	 t = 0;
 
 Step11: /* Round up if needed. */
        if ((d == s && (sp != 0 || t != 0)) ||

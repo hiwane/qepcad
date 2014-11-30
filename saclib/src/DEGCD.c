@@ -20,13 +20,13 @@ Method
 void DEGCD(a,b, c_,u_,v_)
        Word a,b, *c_,*u_,*v_;
 {
-       Word a1,a2,a3,b2,q,u,u1,u2,u3,v,v1,v2,v3,c,d;
+       Word a1,a2,a3,b2,q,u1,u2,u3,v1,v2,v3,d;
 
 Step1: /* b = 0. */
 	if (b == 0) {
-           c = a;
-	   u = 0;
-	   v = 0;
+	   a2 = a;
+	   u2 = 0;
+	   v2 = 0;
            goto Return; }
 
 Step2: /* Initialize. */

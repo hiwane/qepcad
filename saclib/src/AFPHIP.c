@@ -29,7 +29,6 @@ void AFPHIP(I,A,B_,t_)
 	interval *B;
 	BDigit i,m,t;
 	Word a,Ap;
-	Word V,v;
 
 Step1: /* Get an array for B. */
 	m = PDEG(A);

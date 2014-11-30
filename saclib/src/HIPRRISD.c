@@ -30,16 +30,16 @@ void HIPRRISD(n,A,a,b, L_,t_)
 	Word a,b,*L_;
 	BDigit *t_;
 {
-	BDigit s,s2,t,u,v;
+	BDigit s,s2,t,v;
 	Word c,L,L1,L2;
 	interval *B,*C;
 
 Step1: /* Case that A has at most one variation, */
+	L = NIL;
 	HIPVCHT(n,A, &v,&t);
 	if (t != 0)
 	   goto Return;
 	if (v == 0) {
-	   L = NIL;
 	   goto Return; }
 	if (v == 1) {
 	   L = LIST1(LIST2(a,b));

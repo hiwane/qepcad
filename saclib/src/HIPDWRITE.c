@@ -22,7 +22,6 @@ void HIPDWRITE(n,A,k)
 	BDigit k;
 {
 	BDigit i;
-	Word I;
 
 Step1: /* Convert and write coefficients. */
 	for (i = n; i >= 0; i--) {

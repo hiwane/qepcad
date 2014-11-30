@@ -14,7 +14,7 @@ then
 else
     cd $saclib/src
     echo >$saclib/include/sacproto.h \
-	"extern void FAIL P__((const char *algName, const char *msg,...));"
+	"extern void FAIL P__((const char *algName, const char *msg,...)) __noreturn;"
     for fname in *.c
     do
 	if [ $fname != FAIL.c -a $fname != main.c ] ; then 

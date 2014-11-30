@@ -18,7 +18,7 @@ Outputs
 ======================================================================*/
 #include "saclib.h"
 
-Word ANPEDE(A,B, C_,t_)
+void ANPEDE(A,B, C_,t_)
 
        Word A,B;
        Word *C_, *t_;

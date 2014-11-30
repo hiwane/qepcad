@@ -28,11 +28,11 @@ Step1: /* Get array for B. */
         n = PDEG(A);
         B = GETHIPARRAY(n);
 
-Step2: /* /* Convert coefficients. */
+Step2: /* Convert coefficients. */
         Ap = A;
         for (i = n; i >= 0; i--) {
            if (Ap == NIL || FIRST(Ap) < i)
-              B[i] = izero;
+              B[i].left = B[i].right = 0.0;
            else {
               Ap = RED(Ap);
               ADV(Ap,&a,&Ap);

@@ -15,7 +15,7 @@ Outputs
 ======================================================================*/
 #include "saclib.h"
 
-Word AMUPVARIR(M,I,A, n_,J_)
+void AMUPVARIR(M,I,A, n_,J_)
 
        Word M,I,A;
        Word *n_,*J_;

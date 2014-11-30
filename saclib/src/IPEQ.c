@@ -15,7 +15,7 @@ Output
 Word IPEQ(r,A,B)
        Word r,A,B;
 {
-       Word a,Ah,Ap,b,bh,bp,Bb,Bp,Bh,c,C,e,f,g,h,k,m,n,rp;
+       Word a,Ah,Ap,b,bh,bp,Bb,Bp,Bh,c,C,e,f,g,h,m,n,rp;
 
 Step1: /* A = 0. */
        if (A == 0) {
@@ -27,10 +27,9 @@ Step2: /* r = 0. */
 	  C = IEQ(A,B);
 	  goto Return; }
 
-Step3: /* Set m = deg(A), n = deg(B), k = deg(C). */
+Step3: /* Set m = deg(A), n = deg(B). */
        m = PDEG(A);
        n = PDEG(B);
-       k = m - n;
 
 Step4: /* Set b = ldcf(B), B_ = red(B), r' = r - 1. */
        b = PLDCF(B);

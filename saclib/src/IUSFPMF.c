@@ -38,7 +38,7 @@ void IUSFPMF(A, p_,F_,C_,L_)
        Word A, *p_,*F_,*C_,*L_;
 {
        Word B,B1,Bp,C,D,F,F1,Fp,G,H,H1,I,J,L,Lp,P,R,
-            a,b,d,e,f,i,j,k,n,p,q,s;
+            a,b,d,e,f,i,j,k,n,p,q;
 
 Step1: /* Initialize. */
        p = 0;
@@ -48,7 +48,6 @@ Step1: /* Initialize. */
        n = n + 1;
        C = IDIF(IMP2(1,n),1);
        L = NIL;
-       s = 0;
        a = PLDCF(A);
        i = 0;
        P = RED(SPRIME); /* skip over the prime 2 */
@@ -92,7 +91,6 @@ Step4: /* Compute the factor degree set. */
 	  p = 0;
 	  F = NIL;
 	  L = NIL;
-	  s = 1;
 	  goto Return; }
        if (k < n) {
 	  p = q;

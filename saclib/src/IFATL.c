@@ -40,6 +40,7 @@ Step4: /* Copy digits to initial segment of AVAIL. */
        if (AVAIL == NIL)
 	  GC();
        B = AVAIL;
+       Bp = 0;
        if (s < 0) {
 	  for (k = 0; k <= n; k++) {
 	     if (AVAIL == NIL) {

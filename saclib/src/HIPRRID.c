@@ -26,9 +26,10 @@ void HIPRRID(n,A, L_,t_)
 {
 	BDigit k,s,t;
 	interval *B,*C;
-	Word b,I,J,L,L1,L2;
+	Word I,L,L1,L2;
 
 Step1: /* Compute a bound for the positive roots. */
+	L = NIL;
 	k = HIPPRB(n,A);
 
 Step2: /* Isolate the positive roots. */

@@ -59,6 +59,10 @@ Step3: /* r=1. */
          }
 
 Step4: /* Compute univariate contents and primitive parts. */
+       Ap = 0;
+       Bp = 0;
+       Cp = 0;
+       Q = 0;
        MPUCPP(r,p,A,&a,&Ah);
        MPUCPP(r,p,B,&b,&Bh);
        c = MUPGCD(p,a,b);
@@ -125,7 +129,7 @@ Step13: /* Conditional initialization of interpolation process. */
          }
 
 Step14: /* Test for unlucky element. */
-       if (t == 1 || t == 3 || t == 0 && PDEG(Q) > g)
+       if (t == 1 || t == 3 || (t == 0 && PDEG(Q) > g))
          goto Step8;
 
 Step15: /* Interpolate. */

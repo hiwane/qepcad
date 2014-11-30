@@ -16,7 +16,7 @@ Outputs
 Word IPQ(r,A,B)
        Word r,A,B;
 {
-       Word C,R;
+       Word C;
 
 Step1: /* Compute. */
        if (r == 0)

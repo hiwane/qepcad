@@ -22,7 +22,6 @@ interval HIPIEVAL(n,A,I)
 {
 	BDigit i;
 	interval J;
-	Word L;
 
 Step1: /* Apply Horner's method. */
 	J = A[n];

@@ -27,7 +27,7 @@ Outputs
 void IUPSQHLL(p,q,A,C,Ap_,Bp_,Sp_,Tp_)
        Word p,q,A,C,*Ap_,*Bp_,*Sp_,*Tp_;
 {
-       Word Ab,Ap,As,B,Bb,Bp,Bs,Cb,Cp,L,R,Sb,Sp,Ss,Tb,Tp,Ts;
+       Word Ab,Ap,As,Bb,Bp,Bs,Cb,Cp,L,R,Sb,Sp,Ss,Tb,Tp,Ts;
 
 Step1: /* Initialize. */
        Ap = NIL;
@@ -36,7 +36,6 @@ Step1: /* Initialize. */
        Tp = NIL;
        L  = A;
        Cp = MPHOM(1,q,C);
-       B  = Cp;
 
 Step2: /* Lift factors. */
        while (RED(L) != NIL) {

@@ -17,6 +17,7 @@ void PTRADV2(L,a_,b_,Lp_)
      Word L, **a_, **b_, *Lp_;
 {
   Word Lp, *a, *b;
+  Lp = NIL;
   PTRADV(Lp,&a,&Lp);
   PTRADV(Lp,&b,&Lp);
   *Lp_ = Lp;

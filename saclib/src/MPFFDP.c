@@ -27,6 +27,7 @@ Step1: /* Search for an irreducible binomial. */
               goto Return; }
 
 Step2: /* Search for an irreducible polynomial with three or more terms. */
+	F = NIL;
 	for (k = 1; k < n; k++) {
 	   if (p == 2 && EVEN(k))
 	      k = k + 1;

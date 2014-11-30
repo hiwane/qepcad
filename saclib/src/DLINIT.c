@@ -31,7 +31,7 @@ void DLINIT(p,n,Fp,Gp,A,B,C)
 	BDigit **Fp,**Gp,**A,**B,**C;
 {
 	BDigit a,q;
-	Word F,G;
+	Word F;
 
 Step1: /* n = 1. */
         if (n == 1) {

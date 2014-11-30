@@ -180,6 +180,7 @@ Step10: /* Continue with longer input. */
 
 Step11: /* Normalize the sum. */
        Cb = C;
+       Cs = 0;
        cp = 0;
        if (u < 0)
 	  do {

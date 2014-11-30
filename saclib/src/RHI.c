@@ -23,7 +23,6 @@ void RHI(a,b,I_,t_)
 	BDigit e,e1,e2,f,g,m01,m02,m11,m12,s1,s2,t,t1,t2;
 	ieee F1,F2,G1,G2;
         interval F,G,I;
-	BDigit c;
 
 Step1: /* Apply ISEM  to both a and b. */
 	ISEM(a,&s1,&e1,&m11,&m01,&t1);

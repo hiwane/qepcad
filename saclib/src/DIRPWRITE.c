@@ -14,7 +14,7 @@ Inputs
 void DIRPWRITE(r,A,V)
        Word r,A,V;
 {
-       Word Ap,E,Eb,Ep,Vb,Vp,a,e,s,v,p1,n1;
+       Word Ap,E,Ep,Vp,a,e,s,v,p1,n1;
        char fc,z;
 
 Step1: /* r = 0 or A = 0. */

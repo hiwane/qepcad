@@ -18,7 +18,7 @@ interval HIQUOT(I,J)
 
        interval I,J;
 {
-       double a1,a2,b,b1,b2,c1,c2,d1,d2;
+       double a1,a2,b1,b2;
        interval K;
 
 Step1: /* Extract endpoints. */

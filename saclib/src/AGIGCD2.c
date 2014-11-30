@@ -17,11 +17,13 @@ BDigit **AGIGCD2(A,B)
 	BDigit **D,**Dt,**E,**Et,**F,**Ft,*Gt,**Q,*T1,*T2,*T3,**U;
 	BDigit d,dp,h,k,kp,M,m,N,n,np,p,t;
 	BDigit d1,d2,e,e1,e2,f1,f2,q1,q2,r1,r2;
+	BDigit i,I;
 
-BDigit g,i;
-BDigit j,*W,*X;
+/*
+BDigit g,j,*W,*X;
 BDigit **S;
-BDigit I,P,T,V;
+BDigit P,T,V;
+*/
 
 Step1: /* Set the precision. */
 	d = 8;

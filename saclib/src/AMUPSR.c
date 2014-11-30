@@ -18,8 +18,7 @@ Outputs
 Word AMUPSR(M,I,A,c)
        Word M,I,A,c;
 {
-       Word a,b,s;
-       Word Is;
+       Word b,s;
        /* hide s; */
 
 Step1: /* Compute the sign. */

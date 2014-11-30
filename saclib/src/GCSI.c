@@ -21,10 +21,9 @@ void GCSI(s,EACSTACK)
        Word s;
        char *EACSTACK;
 {
-       Word I,L,N,N1,Np,Np1,T,T1,c,**i,j,inc;
+       Word I,L,N,N1,Np,Np1,T,T1,c,inc;
        char *a;
-       GCArray *v;
-       /* hide I,L,N,N1,Np,Np1,T,T1,c,i,j,inc,a,v; */
+       /* hide I,L,N,N1,Np,Np1,T,T1,c,inc,a; */
 
 Step1: /* Setup. */
        if (GCM == 1) {

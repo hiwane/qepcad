@@ -35,6 +35,7 @@ Step1: /* Initialize. */
 
 Step2: /* Test for real roots of each Li in current interval. */
        v = 0;
+       j = 0;
        jp = 0;
        Lp = L;
        Js = LIST2(a,b);

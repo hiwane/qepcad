@@ -17,7 +17,7 @@ Output
 ===========================================================================*/
 #include "saclib.h"
 
-Word IPMONFACT(r,A, L_,Ap_)
+void IPMONFACT(r,A, L_,Ap_)
        Word r,A, *L_,*Ap_;
 {
        Word L,Ap,E,e,a,i;

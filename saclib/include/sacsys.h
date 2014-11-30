@@ -43,5 +43,15 @@ typedef int     Word;
 #define P__(A)  ()
 #endif
 
+/* Indicate that a function does not return. */
+#ifndef __noreturn
+# ifdef __GNUC__
+#  define __noreturn __attribute__ ((noreturn))
+# else
+#  define __noreturn
+# endif
+#endif
+
+
 
 #endif

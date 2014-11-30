@@ -50,6 +50,10 @@ Step3: /* A=0 or B=0. */
 	  goto Return; }
        
 Step4: /* Compute integer contents and primitive parts. */
+       Ap = 0;
+       Bp = 0;
+       Cp = 0;
+       Q = 0;
        IPICPP(r,A,&a,&Ah);
        IPICPP(r,B,&b,&Bh);
        c = IGCD(a,b);

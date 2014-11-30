@@ -22,7 +22,7 @@ void HIPBHT(n,A,k,B_,t_)
 	BDigit *t_;
 {
 	interval *B;
-	BDigit e,i,t;
+	BDigit i,t;
 	ieee F;
 	double f,g;
 
@@ -38,7 +38,7 @@ Step2: /* Get array. */
 Step3: /* Construct floating-point numbers 1 and  2^k. */
 	F.rep.sign = 0;
 	F.rep.exp = k + BIAS;
-	F.rep.mant_h = 1 << 20;
+	F.rep.mant_h = (1 << 20) & 0xFFFFF; /* I think this should just be 0! */
 	F.rep.mant_l = 0;
 	f = F.num;
 	g = 1.0;

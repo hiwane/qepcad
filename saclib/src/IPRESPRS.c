@@ -39,6 +39,7 @@ Step1: /* Initialize. */
         d1 = n1 - n2;
         rp = r - 1;
         i = 1;
+        h0 = 0;
 
 Step2: /* Compute Gh_{i+2} and n_{i+2}. */
        Gh3 = IPPSR(r,G1,G2);

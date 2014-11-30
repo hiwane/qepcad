@@ -24,8 +24,6 @@ Word IPRES(r,A,B)
 	BDigit d1,i,k,**M,m,n,p,q,rp;
         Word As,Bs,C,Cs,D,L,Mp,P,Q,d,e,f;
 
-	BDigit j,T;
-
 Step1: /* Compute a coefficient bound. */
         d = IPSUMN(r,A);
         e = IPSUMN(r,B);

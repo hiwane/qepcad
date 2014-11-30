@@ -16,7 +16,7 @@ Outputs
 Word AFSIGN(M,I,a)
        Word M,I,a;
 {
-       Word A,Is,r,s,sp;
+       Word A,r,s,sp;
        /* hide s,sp; */
 
 Step1: /* a rational. */

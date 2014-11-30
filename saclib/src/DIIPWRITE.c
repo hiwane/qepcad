@@ -14,7 +14,7 @@ Inputs
 void DIIPWRITE(r,A,V)
        Word r,A,V;
 {
-       Word Ap,E,Eb,Ep,Vb,Vp,a,e,s,v;
+       Word Ap,E,Ep,Vp,a,e,s,v;
        char fc,z;
 
 Step1: /* r = 0 or A = 0. */

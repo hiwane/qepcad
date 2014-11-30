@@ -32,9 +32,9 @@ void AFUPHIBRI(M,I,B, L_,t_)
 	Word *L_;
 	BDigit *t_;
 {
-	Word a1,a2,B1,B2,Bp,*D,I1,Ip,L,L1,Lp,Lp1,*N,*T,*X;
+	Word a1,a2,B1,Bp,*D,I1,L,L1,Lp,Lp1,*N,*T,*X;
 	BDigit h,i,j,k,m,n,n1,n2,np,q,r,s,s1,t,t1,u,x,i1,is3;
-	interval *A,*Bp1,Is,It,*J,K,**P;
+	interval *A,*Bp1,*J,K,**P;
 	ieee F1,F2;
 	double p,w1,w2;
 

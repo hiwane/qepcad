@@ -39,7 +39,6 @@ void HIPIR(n,A,I,t,h,k,J_,j_)
 	interval J;
 	BDigit j,s;
 	double a,b,c,w;
-	Word ap;
 
 Step1: /* Set FPCATCH. */
 	FPCATCH();

@@ -42,6 +42,7 @@ Step2: /* F = 0. */
              sp = 1;
           else
              sp = 0;
+          t = 0;
           goto Return; }
        sp = F.rep.sign; 
        if (s != d)

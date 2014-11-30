@@ -37,7 +37,7 @@ Step2: /* Is the quotient 1 or 2 ? */
 	  v3 = v1 - v2;
 	  goto Step4; }
        d3 = d2 - a2;
-       if (d2 < 0) {
+       if (d3 < 0) {
 	  a3 = d2;
 	  u3 = u1 - u2 - u2;
 	  v3 = v1 - v2 - v2;

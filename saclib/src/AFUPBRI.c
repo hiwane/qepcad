@@ -23,7 +23,7 @@ Word AFUPBRI(M,I,L)
 {
        Word A1,A2,B1,I1,I11,I21,Lp,Lpp,N,S,S1,S2,Sp,Spp,Ss1,Ss2,T,T1,
             T2,s;
-       Word At1,at1,Lt;
+       Word At1,Lt;
        /* hide A1,A2,B1,Lp,Lpp,Sp,Spp,s; */
 
 Step1: /* Compute Ati, an element of Z[alpha,x], similar to Ai. */

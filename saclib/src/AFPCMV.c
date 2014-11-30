@@ -20,7 +20,7 @@ Word AFPCMV(r,M,A,B)
 {
        Word C;
 
-       Word Ap,a2,P,e1,e2,i;
+       Word Ap,a2,e1,e2,i;
 
 Step1: /* A=0. */
        if (A == 0)

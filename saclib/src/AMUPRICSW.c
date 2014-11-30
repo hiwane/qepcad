@@ -18,13 +18,13 @@ Outputs
 ======================================================================*/
 #include "saclib.h"
 
-Word AMUPRICSW(M,I,A,L_,Is_)
+void AMUPRICSW(M,I,A,L_,Is_)
 
        Word M,I,A;
        Word *L_,*Is_;
 {
        Word L,Is;
-       Word As_1,As_2,Ab,ab,I_1,I_2,Ls_1,Ls_2,L_0,L_1,
+       Word As_1,As_2,Ab,I_1,I_2,Ls_1,Ls_2,L_0,L_1,
            L_2,b_1,b_2,m;
 
 Step1: /*[Initialize and check if A(0) = 0.]*/

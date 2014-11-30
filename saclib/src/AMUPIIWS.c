@@ -25,7 +25,6 @@ void AMUPIIWS(M,I,A,L)
        Word M,I,A,L;
 {
        Word I1,I2,Lp,a,a1,ap,b,b1,bp,c,r2,t,y1,y3;
-       Word Is;
        /* hide t,y1,y3; */
 
 Step1: /* Make intervals strongly disjoint. */

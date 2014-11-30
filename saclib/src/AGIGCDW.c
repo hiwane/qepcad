@@ -42,9 +42,11 @@ for (i = 0; i <= 9; i++)
 Step2: /* A = 0 or B = 0. */
         if (AGIZERO(A)) {
            AGICOPY(B,C);
+           N = 0;
            goto Step9; }
         if (AGIZERO(B)) {
            AGICOPY(A,C);
+           N = 0;
            goto Step9; }
 
 Step3: /* Reduce the inputs. */

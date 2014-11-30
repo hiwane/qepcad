@@ -25,7 +25,7 @@ void ARGSACLIB(argc,argv,ac_,av_)
        char ***av_;
 {
        Word gcm,nsprime,nmprime,nlprime,nu,nup,rho,nptr1;
-       int  ac,i,j;
+       int  ac,i;
        char **av;
 
 Step1: /* Store the default values of certain global variables. */ 

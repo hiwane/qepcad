@@ -29,7 +29,7 @@ Step1: /* Get the leading words of A. */
        d = PDLOG2(a1);
        e = ZETA - d;
        if (e > 0) {
-	  a1 = (a1 <<= e) | (a0 >> d);
+	  a1 = (a1 << e) | (a0 >> d);
 	  a0 = (A[m-3] >> d) | ((a0 << e) & BETA1); }
 
 Step2: /* Get the leading words of B. */

@@ -19,8 +19,6 @@ void AINQ(A,B,Q,R,S,T)
 {
 	BDigit c,i,k,s,t;
 
-Word Ap,Bp,Qp,Rp;
-
 Step1: /* Apply AIQR. */
 	AIQR(A,B,Q,R,T);
 

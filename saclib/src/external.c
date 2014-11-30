@@ -11,7 +11,7 @@
 
 /* Version. */
 
-char SACLIBVERSION[] = "SACLIB 2.2.5";
+char SACLIBVERSION[] = "SACLIB 2.2.6";
 
 
 /* List processing */

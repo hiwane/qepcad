@@ -16,8 +16,8 @@ Outputs
 void IPFACTREAD(r,V, A_,t_)
        Word r,V, *A_,*t_;
 {
-       Word A,C,N,i,k,t,v;
-       /* hide C,i,k,t; */
+       Word A,C,N,k,t,v;
+       /* hide C,k,t; */
 
 Step1: /* Setup and Classify. */
        t = 1;

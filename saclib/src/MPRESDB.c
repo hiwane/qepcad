@@ -19,10 +19,8 @@ Word MPRESDB(r,p,A,B,D)
 	BDigit r,p;
         Word A,B,D;
 {
-        Word As,Bs,C,Cs,Dp,E,Ep,b,L,P;
-	BDigit d,i,k,**M,m,n,q,rp;
-
-	Word T;
+        Word As,Bs,C,Cs,Dp,E,Ep,b;
+	BDigit d,i,m,n,rp;
 
 Step1: /* r = 1. */
         if (r == 1) {

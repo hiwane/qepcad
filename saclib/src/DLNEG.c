@@ -19,7 +19,7 @@ BDigit DLNEG(a)
 Step1: /* Three cases. */
 	if (a == 0)
 	   b = 0;
-	else if (FFSIZE & 1 == 1)
+	else if ((FFSIZE & 1) == 1)
 	   b = a;
 	else {
 	   q2 = FFSIZE >> 1;

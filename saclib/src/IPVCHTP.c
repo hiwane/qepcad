@@ -83,7 +83,7 @@ Step3: /* Count sign variations while applying synthetic division . */
 	     P[i + g] = a1; }
 	  s = 0;
 	  i = m + g;
-	  while (s == 0 & i > m) {
+	  while (s == 0 && i > m) {
 	     if (P[i] != 0)
 		s = P[i];
 	     i = i - 1; }

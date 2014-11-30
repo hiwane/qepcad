@@ -17,8 +17,8 @@ Outputs
 Word DIIPREAD(V)
        Word V;
 {
-       Word A,C,Cp,E,a,e,i,j,k,r,s,v;
-       /* hide C,e,i,j,k,r,s; */
+       Word A,C,Cp,E,a,e,i,j,k,r,v;
+       /* hide C,e,i,j,k,r; */
 
 Step1: /* Rl=0. */
        if (V == NIL) {
@@ -29,7 +29,7 @@ Step1: /* Rl=0. */
 Step2: /* Initialize. */
        C = CREADB();
        if (C != '(')
-         goto Step6;
+         goto Step7;
        A = NIL;
        r = LENGTH(V);
 

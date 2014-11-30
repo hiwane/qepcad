@@ -47,7 +47,7 @@ Step2: /* If A is divisible by 1 + 1, multiply A  by 1 - i,
           add 1 to k, and divide by 2^{h + 1}.  Otherwise
           divide A by 2^h. */
 	k = h + h;
-	if ((a1 & 1 == 1) && (a2 & 1 == 1)) {
+	if (((a1 & 1) == 1) && ((a2 & 1) == 1)) {
 	   A1[0] = - A1[0];
 	   AISUM(A1,A2,B[1]);
 	   A1[0] = - A1[0];

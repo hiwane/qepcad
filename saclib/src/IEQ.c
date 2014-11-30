@@ -50,6 +50,8 @@ Step5: /*  Compute lengths and signs. */
        J = 0;
        App = Ap;
        Bpp = Bp;
+       ah = 0;
+       bh = 0;
        while (Bpp != NIL) {
 	  ah = FIRST(App);
 	  App = RED(App);

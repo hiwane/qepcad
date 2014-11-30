@@ -97,6 +97,7 @@ Step4: /* Test for real roots of each Li in current interval. */
        v = 0;
        kp = 0;
        Lp = L;
+       S = 0;
        do
          {
          ADV(Lp,&L1,&Lp);

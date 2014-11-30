@@ -92,6 +92,7 @@ typedef struct {
   double left, right;
 } interval;
 
+/*
 static interval izero = { 0.0, 0.0 };
 static interval ione  = { 1.0, 1.0 };
-
+*/

@@ -51,7 +51,7 @@ Outputs
 void NORMEFD(N,n,p,Q,B,L,G,C,d,N1, F_,Nb_,Gb_,Bb_,Ib_,Cb_,Nb1_)
        Word N,n,p,Q,B,L,G,C,d,N1, *F_,*Nb_,*Gb_,*Bb_,*Ib_,*Cb_,*Nb1_;
 {
-       Word A,A1,Bb,Cb,F,Fb,Fp,F1,Gb,Ib,Ib1,Lb,Lp,Lb1,Lp1,L1,Nb,Nb1,
+       Word A,A1,Bb,Cb,F,Fb,F1,Gb,Ib,Ib1,Lb,Lp,Lb1,Lp1,L1,Nb,Nb1,
             Qp,Tb,T1,c,dp,d1,e,i,k,n1,q,s;
 
 Step1: /* Initialize. */
@@ -66,7 +66,6 @@ Step1: /* Initialize. */
        Ib = NIL;
        F = NIL;
        k = LENGTH(SECOND(FIRST(L)))-1;
-       Fp = NIL;
        e = 1;
        dp = d;
        c = 1;
