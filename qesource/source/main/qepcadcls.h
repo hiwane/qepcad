@@ -56,13 +56,13 @@ public:
   GCWord PCDESIRED;   /* Desired cell condition */
   GCWord PCUSEDES;    /* 'y' if use the desired condition, 'n' otherwise. */
   GCWord PCNUMDEC;    /* Number of decimal digits for 
-		     * approximating algebraic numbers. */
+		       * approximating algebraic numbers. */
   GCWord PCSIMPLIFY;  /* 'b' if bottom-up is used.   
-		     * 't' if top-down is used. */
+		       * 't' if top-down is used. */
   GCWord PCEQC;       /* 1 if equational contraint specified.
-		     * 0 otherwise. */
+		       * 0 otherwise. */
   GCWord PCPROPEC;    /* Propagation of equational constraints. */
-
+  
   GCWord PCSEARCHOK;     /* 'y' if the search for true/false cell succeeded, 'n' otherwise. */
   GCWord PCSEARCHTRUE;   /* 'y' if the search for true cell should be done, 'n' otherwise. */
   GCWord PCSEARCHFALSE;  /* 'y' if the search for false cell should be done, 'n' otherwise. */

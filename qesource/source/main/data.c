@@ -95,6 +95,7 @@ string *OUTSTRING;    /* Output string. */
 string *INSTRING;     /* Input string. */
 int i_INSTRING;       /* Index in input string. */
 Word  OPOS;           /* The position of the last character written. */
+Word NOECHOSWITCHSET = FALSE; /* Set to true if command-line switch */
 
 /* -------------------------------------------------------------------------*/
 /*                     Report the global variables to GC.                   */

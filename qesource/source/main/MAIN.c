@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 Step1: /* Set up the system. */
        ARGSACLIB(argc,argv,&ac,&av);
        BEGINSACLIB((Word *)&argc);
-       BEGINQEPCAD(argc,argv);
+       BEGINQEPCAD(ac,av);
        init_SIGINT_handler(); /* A special handler for SIGINT is needed
                                  to shut down child processes. Also used
 			         for SIGTERM. */

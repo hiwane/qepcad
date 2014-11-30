@@ -26,7 +26,7 @@ Step2: /* Initialize Output. */
        OutputContextInit(std::cout);
 
 Step3: /* Control Echo. */
-       if (!isatty(0))
+       if (!isatty(0) && !NOECHOSWITCHSET)
          setECHO(1);
        else
          setECHO(0);

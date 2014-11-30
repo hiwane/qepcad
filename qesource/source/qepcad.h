@@ -598,9 +598,11 @@ extern int i_INSTRING;
 extern FILE *OUTSTREAM;      /* Output stream. */
 extern string *OUTSTRING;    /* Output string. */
 extern Word OPOS;            /* The position of the last character written. */
+extern Word NOECHOSWITCHSET; /* Set to true if command-line switch */
+
 void PushInputContext(istream &in);
 void PopInputContext();
-void InputContextInit();
+void InputContextInit(istream& defaultin);
 Word setECHO(Word k);
 Word setWASBKSP(Word k);
 void PushOutputContext(ostream &out);

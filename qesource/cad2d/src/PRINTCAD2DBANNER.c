@@ -4,10 +4,10 @@
 #include "cad2d.h"
 
 /* $Format: "static const char* version = \"$ProjectVersion$\";"$ */
-static const char* version = "1.65";
+static const char* version = "1.69";
 
 /* $Format: "static const char* versdate = \"$ProjectDate$\";"$ */
-static const char* versdate = "Tue, 10 May 2011 13:14:52 -0400";
+static const char* versdate = "Fri, 16 Mar 2012 10:21:38 -0400";
 
 static void setversline() {
   int j;

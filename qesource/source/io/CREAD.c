@@ -20,6 +20,7 @@ Side effects
 #include <fstream>
 #include <iostream>
 #include "db/readlineistream.h"
+#include "db/convenientstreams.h"
 using namespace std;
 
 static istream *currIn = 0;
@@ -27,6 +28,7 @@ static char IBUFF[ISIZE];    /* The size of input buffer for errory display. */
 static Word IPOS;            /* The position of the last character read. */
 static Word ECHO;            /* Echo the input if 1. */
 static Word WASBKSP;         /* 1 if there was backspace. */
+static Word INSTATE = 0;     /* 0=standard, 1=in comment */
 
 istream& qein() { return *currIn; }
 
@@ -36,7 +38,7 @@ Word setWASBKSP(Word k) { swap(k,WASBKSP); return k; }
 class InputContext
 {
 public:
-  Word LASTCHAR, WASBKSP, ECHO;
+  Word LASTCHAR, WASBKSP, ECHO, INSTATE;
   char IBUFF[ISIZE];
   istream *pin;
 };
@@ -50,16 +52,21 @@ void PushInputContext(istream &in)
   ICS.top().LASTCHAR = LASTCHAR;
   ICS.top().WASBKSP = WASBKSP;
   ICS.top().ECHO = ECHO;
+  ICS.top().INSTATE = INSTATE;
   ICS.top().pin = currIn;
   for(int i = 0; i < ISIZE; ++i)  ICS.top().IBUFF[i] = IBUFF[i];
 
   // Create a new Current Context
+  InputContextInit(in);
+  /*
   LASTCHAR = '\n';
   WASBKSP = 0;
   ECHO = 0;
+  INSTATE = 0;
   currIn = &in;
   for (int i=0; i < ISIZE; i++) IBUFF[i] = '?';
   IPOS = 0; IBUFF[IPOS] = '\n';
+  */
 }
 
 void PopInputContext()
@@ -67,6 +74,7 @@ void PopInputContext()
   LASTCHAR = ICS.top().LASTCHAR;
   WASBKSP = ICS.top().WASBKSP;
   ECHO = ICS.top().ECHO;
+  INSTATE = ICS.top().INSTATE;
   currIn = ICS.top().pin;
   for(int i = 0; i < ISIZE; ++i)  IBUFF[i] = ICS.top().IBUFF[i];
   ICS.pop();
@@ -77,6 +85,7 @@ void InputContextInit(istream& defaultin)
   LASTCHAR = '\n';
   WASBKSP = 0;
   ECHO = 0;
+  INSTATE = 0;
   currIn = &defaultin;
   for (int i=0; i < ISIZE; i++) IBUFF[i] = '?';
   IPOS = 0; IBUFF[IPOS] = '\n';
@@ -103,8 +112,14 @@ Step3: /* End of file. */
 	 cerr << "\007\007\007";
 	 int fd = open("/dev/tty",O_RDONLY);
 	 PushInputContext(*(new readlineIstream(fd)));
-         C = (*currIn).get();
+         //C = (*currIn).get();
+         return CREAD();
        }
+
+       else if (INSTATE == 0 && C == '#')  { INSTATE = 1; return CREAD(); }
+       else if (INSTATE == 1 && C != '\n') { return CREAD(); }
+       else if (INSTATE == 1 && C == '\n') { INSTATE = 0; }
+
 
 Step4: /* Remember the character. */
        LASTCHAR = C;
