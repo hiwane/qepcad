@@ -7,7 +7,7 @@
 ##################################################################
 SHELL = /bin/csh
 MAKE       =  make  # You must use gmake, but it may not be
-                     # called gmake on your system, so change this
+                    # called gmake on your system, so change this
 
 CCo        =  g++
 FLAGSo = -O4

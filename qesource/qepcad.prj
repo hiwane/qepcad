@@ -1,11 +1,11 @@
 ;; -*- Prcs -*-
 (Created-By-Prcs-Version 1 3 3)
 (Project-Description "QEPCAD B - Quantifier Elimination by Partial Cylindrical Algebraic Decomposition")
-(Project-Version qepcad 1 61)
-(Parent-Version qepcad 1 60)
-(Version-Log "Brought cad2d in line with changes to qepcad initialization code.")
+(Project-Version qepcad 1 65)
+(Parent-Version qepcad 1 63)
+(Version-Log "")
 (New-Version-Log "")
-(Checkin-Time "Fri, 18 Mar 2011 10:07:43 -0400")
+(Checkin-Time "Tue, 10 May 2011 13:14:52 -0400")
 (Checkin-Login wcbrown)
 (Populate-Ignore ())
 (Project-Keywords)
@@ -33,7 +33,7 @@
   
   
   (LOG (qepcad/b/51_LOG 1.16.1.2 600))
-  (Makefile (qepcad/c/0_Makefile 1.10 600))
+  (Makefile (qepcad/c/0_Makefile 1.12 600))
   (extensions/lift2D/IBPRRROAPSF.c (qepcad/c/1_IBPRRROAPS 1.3 600))
   (extensions/lift2D/modSIPRRISD.c (qepcad/c/2_modSIPRRIS 1.3 600))
   (extensions/lift2D/modSIPRRID.c (qepcad/c/3_modSIPRRID 1.3 600))
@@ -387,7 +387,7 @@
   (bin/qepcad.help (../source/qepcad.help) :symlink)
   (source/qepcad.h (qepcad/j/18_qepcad.h 1.5.1.8.1.4 600))
   (source/Scan (qepcad/j/19_Scan 1.1 700))
-  (source/Makefile (qepcad/j/20_Makefile 1.4.1.15 600))
+  (source/Makefile (qepcad/j/20_Makefile 1.4.1.16 600))
   (source/qepcad.help (qepcad/j/21_qepcad.hel 1.9.1.1 600))
   (source/sysolve/ASSUMPTIONSRATVEVAL.c (qepcad/q/35_ASSUMPTION 1.2 600))
   (source/sysolve/CHANGEASSUMPTIONSLEVEL.c (qepcad/q/36_CHANGEASSU 1.2 600)) 
@@ -800,7 +800,7 @@
 ;; Files added by populate at Tue, 13 Mar 2007 12:25:11 -0400,
 ;; to version 1.45(w), by qepcad:
 
-  (default.qepcadrc (qepcad/s/9_default.qe 1.5 600))
+  (default.qepcadrc (qepcad/s/9_default.qe 1.6 600))
   (source/normqff/FINDEQCONSTS.c (qepcad/s/10_FINDEQCONS 1.1 600))
   (source/sysolve/SIIOIQ.c (qepcad/s/11_SIIOIQ.c 1.1 600))
   (source/ticad/LPFZCALL.c (qepcad/s/12_LPFZCALL.c 1.1 600))
