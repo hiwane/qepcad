@@ -1,0 +1,9 @@
+#! /bin/csh
+
+if ($#argv == 0) then
+  perl $saclib/bin/mksysdep.pl
+endif
+if ($#argv == 1) then
+  perl $saclib/bin/mksysdep.pl $1
+endif
+
