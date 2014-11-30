@@ -56,7 +56,7 @@ Step2: /* Check if S1 vanishes and, if so, whether this invalidates McCallum's p
 		 SWRITE(" of postive dimension.  The McCallum projection ");
 		 SWRITE("may not be valid.\n"); } }
 	     
-	     if (f == TRUE || CELLDIM(c) == 0) {
+	     if (CELLDIM(c) == 0 || f == TRUE) {
 	       P = DELINPOLR(k,B1,b);
 	       if (P != NIL && CELLDIM(c) == 0) {
 		 L = COMP(P,L); }

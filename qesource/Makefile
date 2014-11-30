@@ -6,7 +6,7 @@
 # extensions.
 ##################################################################
 SHELL = /bin/csh
-MAKE       =  gmake  # You must use gmake, but it may not be
+MAKE       =  make  # You must use gmake, but it may not be
                      # called gmake on your system, so change this
 
 CCo        =  g++

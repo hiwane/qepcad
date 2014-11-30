@@ -12,7 +12,6 @@
  ***************************************************************/
 #ifndef _UNNAMEDPIPE_
 #define _UNNAMEDPIPE_
-#include <cstring>
 #include <cstdlib>
 #include <cstdio>
 #include <unistd.h>
@@ -58,7 +57,7 @@ public:
   {
     if (gptr() >= egptr())
     {
-      int leftover = min((long int)extra, (long int)(gptr() - eback())), readSize;
+      int leftover = min(extra, gptr() - eback()), readSize;
       memmove(buff + (extra-leftover), gptr() - leftover, leftover);
       if ((readSize=read(fileDes, buff + extra, buffSize - extra)) <= 0) return EOF;
       setg(buff + (extra-leftover), buff + extra, buff + (4+readSize));

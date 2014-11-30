@@ -35,7 +35,7 @@ Step3: /* Allocate memory for an array rep. of the signitures
 	a = LENGTH(L);
 	V = (Word*)GETARRAY(a*(k+2));
 	Vt = V;
-	A = (Word**)GETARRAY(a);
+	A = (Word**)GETARRAY(a*(sizeof(Word*)/sizeof(Word))); /* ASSUMES THIS / IS EXACT! */
 	V += 2;
 	for(i = 0; i < a; i++) {
 	  A[i] = V;

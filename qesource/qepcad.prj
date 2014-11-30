@@ -1,12 +1,12 @@
 ;; -*- Prcs -*-
 (Created-By-Prcs-Version 1 3 3)
 (Project-Description "QEPCAD B - Quantifier Elimination by Partial Cylindrical Algebraic Decomposition")
-(Project-Version qepcad 1 53)
-(Parent-Version qepcad 1 52)
-(Version-Log "Minor change in includes in PLOT_2D_CAD to compile under g++-4.3.")
+(Project-Version qepcad 1 54)
+(Parent-Version qepcad 1 53)
+(Version-Log "Modified code to compile properly for 64-bit architectures. This relies on having at least saclib2.2.3 and tests the __WORDSIZE macro to see whether its value is 32 or 64.")
 (New-Version-Log "")
-(Checkin-Time "Thu, 16 Jul 2009 10:01:10 -0400")
-(Checkin-Login wcbrown)
+(Checkin-Time "Thu, 15 Apr 2010 13:53:10 -0400")
+(Checkin-Login qepcad)
 (Populate-Ignore ())
 (Project-Keywords)
 (Files
@@ -32,8 +32,8 @@
   
   
   
-  (LOG (qepcad/b/51_LOG 1.16.1.1 600))
-  (Makefile (qepcad/c/0_Makefile 1.9 600))
+  (LOG (qepcad/b/51_LOG 1.16.1.2 600))
+  (Makefile (qepcad/c/0_Makefile 1.10 600))
   (extensions/lift2D/IBPRRROAPSF.c (qepcad/c/1_IBPRRROAPS 1.3 600))
   (extensions/lift2D/modSIPRRISD.c (qepcad/c/2_modSIPRRIS 1.3 600))
   (extensions/lift2D/modSIPRRID.c (qepcad/c/3_modSIPRRID 1.3 600))
@@ -269,11 +269,11 @@
   (extensions/sfext/Makefile (qepcad/g/25_Makefile 1.4.1.3 600))
   (extensions/sfext/fewpol/SIGEQUALOL.c (qepcad/h/11_SIGEQUALOL 1.3 600))
   (extensions/sfext/fewpol/CSORTSS.c (qepcad/h/12_CSORTSS.c 1.3 600))
-  (extensions/sfext/fewpol/TDTOD.c (qepcad/h/13_TDTOD.c 1.3.1.1 600))
+  (extensions/sfext/fewpol/TDTOD.c (qepcad/h/13_TDTOD.c 1.3.1.2 600))
   (extensions/sfext/fewpol/PWUDSCWCP.c (qepcad/h/14_PWUDSCWCP. 1.3 600))
-  (extensions/sfext/fewpol/MINPFSET.c (qepcad/h/15_MINPFSET.c 1.3.1.1 600))
+  (extensions/sfext/fewpol/MINPFSET.c (qepcad/h/15_MINPFSET.c 1.3.1.2 600))
   (extensions/sfext/fewpol/ICSIGDIFFL.c (qepcad/h/16_ICSIGDIFFL 1.3 600))
-  (extensions/sfext/addpol/MINPFSETNSC.c (qepcad/h/17_MINPFSETNS 1.3 600))
+  (extensions/sfext/addpol/MINPFSETNSC.c (qepcad/h/17_MINPFSETNS 1.4 600))
   (extensions/sfext/addpol/STRIPPED_BIGLOOP.c (qepcad/h/18_STRIPPED_B 1.3.1.1 600))
   (extensions/sfext/addpol/CFLCELLLIST.c (qepcad/h/19_CFLCELLLIS 1.3 600))
   (extensions/sfext/addpol/BASIC_BIGLOOP.c (qepcad/h/20_BASIC_BIGL 1.3 600))
@@ -521,7 +521,7 @@
   (source/ticad/CHCELL.c (qepcad/l/34_CHCELL.c 1.3.1.1 600))
   (source/ticad/CELLNA.c (qepcad/l/35_CELLNA.c 1.3 600))
   (source/ticad/TCHILD.c (qepcad/l/36_TCHILD.c 1.3 600))
-  (source/ticad/SUBSTR.c (qepcad/l/37_SUBSTR.c 1.3.1.4 600))
+  (source/ticad/SUBSTR.c (qepcad/l/37_SUBSTR.c 1.3.1.5 600))
   (source/ticad/SSCOMP.c (qepcad/l/38_SSCOMP.c 1.3 600))
   (source/ticad/SIGNPR.c (qepcad/l/39_SIGNPR.c 1.3 600))
   (source/ticad/SIGNP1.c (qepcad/l/40_SIGNP1.c 1.5 600))
@@ -621,8 +621,8 @@
   (source/normqff/EXPAFGTS.c (qepcad/o/12_EXPAFGTS.c 1.3 600))
   (source/normqff/EXPAFGT.c (qepcad/o/13_EXPAFGT.c 1.3 600))
   (source/normqff/EXPAFEQ.c (qepcad/o/14_EXPAFEQ.c 1.3 600))
-  (source/main/MAIN.c (qepcad/o/15_MAIN.c 1.4.1.4.1.1 600))
-  (source/main/FAIL.c (qepcad/o/16_FAIL.c 1.2.1.1 600))
+  (source/main/MAIN.c (qepcad/o/15_MAIN.c 1.4.1.4.1.2 600))
+  (source/main/FAIL.c (qepcad/o/16_FAIL.c 1.2.1.2 600))
   (source/main/title (qepcad/o/17_title 1.1 600))
   (source/main/INITIO.c (qepcad/o/21_INITIO.c 1.5 600))
   (source/main/OUTPUTWR.c (qepcad/o/23_OUTPUTWR.c 1.3 600))
@@ -717,7 +717,7 @@
   (source/db/DBADD.c (qepcad/q/16_DBADD.c 1.3 600))
   (source/db/AFPNIPDB.c (qepcad/q/17_AFPNIPDB.c 1.3 600))
   (source/db/AFCSBMDB.c (qepcad/q/18_AFCSBMDB.c 1.3 600))
-  (source/db/unnamedpipe.h (qepcad/s/8_unnamedpip 1.3 600))
+  (source/db/unnamedpipe.h (qepcad/s/8_unnamedpip 1.4 600))
 
 ;; Files added by populate at Tue, 08 Jul 2003 15:17:57 -0400,
 ;; to version 1.15(w), by qepcad:
@@ -732,7 +732,7 @@
   (source/saclib/gcword.c (qepcad/r/19_gcword.c 1.1 600))
   (source/saclib/gcword.h (qepcad/r/20_gcword.h 1.2 600))
   (source/saclib/replacesac.h (qepcad/r/21_replacesac 1.1 600))
-  (source/saclib/GCSI.c (qepcad/r/22_GCSI.c 1.1 600))
+  (source/saclib/GCSI.c (qepcad/r/22_GCSI.c 1.2 600))
   (source/ticad/QEsystems.txt (qepcad/r/23_QEsystems. 1.1 600))
   (extensions/sfext/crcads/NUMSOLPOINTS.c (qepcad/r/24_NUMSOLPOIN 1.1 600))
   (extensions/sfext/crcads/SOLSETDIM.c (qepcad/r/25_SOLSETDIM. 1.2 600))
@@ -798,7 +798,7 @@
 ;; Files added by populate at Tue, 13 Mar 2007 12:25:11 -0400,
 ;; to version 1.45(w), by qepcad:
 
-  (default.qepcadrc (qepcad/s/9_default.qe 1.3 600))
+  (default.qepcadrc (qepcad/s/9_default.qe 1.4 600))
   (source/normqff/FINDEQCONSTS.c (qepcad/s/10_FINDEQCONS 1.1 600))
   (source/sysolve/SIIOIQ.c (qepcad/s/11_SIIOIQ.c 1.1 600))
   (source/ticad/LPFZCALL.c (qepcad/s/12_LPFZCALL.c 1.1 600))
@@ -811,9 +811,9 @@
   (source/db/SingularPolicy.h (qepcad/s/19_SingularPo 1.1 600))
   (source/db/SINGULAR.h (qepcad/s/20_SINGULAR.h 1.1.1.1 600))
   (source/db/SINGULAR.c (qepcad/s/21_SINGULAR.c 1.1.1.1 600))
-  (source/db/readlineistream.h (qepcad/s/22_readlineis 1.2 600))
+  (source/db/readlineistream.h (qepcad/s/22_readlineis 1.3 600))
   (source/db/CAPolicy.h (qepcad/s/23_CAPolicy.h 1.1 600))
-  (source/db/convenientstreams.h (qepcad/s/24_convenient 1.3 600))
+  (source/db/convenientstreams.h (qepcad/s/24_convenient 1.4 600))
 
  
 

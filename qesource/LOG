@@ -93,4 +93,6 @@ constraints, they could be thrown in as well, of course.
            other parties with a potential interest.  Also added
            a "make clean" target to remove all .o & .a files.
 
-
+15/04/2010:Modified code to compile properly for 64-bit architectures.
+           This relies on having at least saclib2.2.3 and tests the
+           __WORDSIZE macro to see whether its value is 32 or 64.

@@ -16,7 +16,7 @@ Side effects
   occurs.
 ======================================================================*/
 #include "replacesac.h"
-
+#include <cstdio>
 extern "C" {
 extern void gcw_MARK();
 }
@@ -35,20 +35,20 @@ Step1: /* Setup. */
        }
        T1 = CLOCK();
 
+Step3: /* Mark the global variables. */
+       L = GCGLOBALS; 
+       while (L != NIL) {
+         c = *((Word *)PTRFIRST(L));
+	 if ((ISLIST(c) || ISGCA(c)) && !ISNIL(c))  MARK(c);
+	 L = PTRRED(L);
+       }
+
 Step2: /* Mark the cells in the GCGLOBALS list. */
        L = GCGLOBALS; 
        while (L != NIL) {
 	 I = RED(L);
 	 SRED(L,-I);
 	 L = I;
-       }
-
-Step3: /* Mark the global variables. */
-       L = GCGLOBALS; 
-       while (L != NIL) {
-         c = *((Word *)FIRST(L));
-	 if ((ISLIST(c) || ISGCA(c)) && !ISNIL(c))  MARK(c);
-	 L = -RED(L);
        }
 
 Step3b: /* Mark the GCWord variables. */

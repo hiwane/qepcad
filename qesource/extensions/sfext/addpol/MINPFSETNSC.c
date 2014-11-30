@@ -75,7 +75,7 @@ Step6: /* Put this all into array representation. */
         a = LENGTH(Ls);
 	k = LENGTH(FIRST(Ls)) - 1;
         V = (Word*)GETARRAY(a*(k + 1)); Vp = V;
-        A = (Word**)GETARRAY(a);
+        A = (Word**)GETARRAY(a*(sizeof(Word*)/sizeof(Word))); /* ASSUMES THIS / IS EXACT! */
         for(i = 0; i < a; i++) {
           A[i] = V + 1;
 	  for(ADV(Ls,&ls,&Ls); ls != NIL; ls = RED(ls))

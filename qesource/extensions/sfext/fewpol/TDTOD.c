@@ -25,7 +25,7 @@ void TDTOD(Word P, Word N, Word ***P2_, Word *P1_, Word *k_)
       Word **P2,Pp,i,pp,n,k,m,j,P1,I,l;
 
 Step1: /* Allocate P2. At the end of the loop k is # of pf's in P. */
-      P2 = (Word**)GETARRAY(N+1);
+      P2 = (Word**)GETARRAY((N+1)*(sizeof(Word*)/sizeof(Word))); /* ASSUMES THIS / IS EXACT! */
       Pp = P; k = 0;
       for(i = 1; i <= N; i++) {
 	ADV(Pp,&pp,&Pp);

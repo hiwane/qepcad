@@ -26,7 +26,7 @@ public:
 class readlineIstream : public istream
 {
 protected:
-  readlineInBuff buff;
+  inline readlineInBuff buff;
 public:
   inline readlineIstream() : buff(), istream(&buff) { }
   inline readlineIstream(int fd) : buff(fd), istream(&buff) { }
@@ -60,7 +60,7 @@ readlineInBuff::int_type readlineInBuff::underflow()
     add_history(s);
     int ls = strlen(s);
     
-    int leftover =  min((long int)extra,(long int)(gptr()-eback()));
+    int leftover =  min(extra,gptr()-eback());
     char *newbuff = (char*)malloc(extra + ls + 1);
     memcpy(newbuff+(extra-leftover),gptr() - leftover, leftover);
     memcpy(newbuff+extra,s,ls);

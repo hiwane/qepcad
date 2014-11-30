@@ -10,9 +10,6 @@
  ***************************************************************/
 #ifndef _CONVENIENT_STREAMS_
 #define _CONVENIENT_STREAMS_
-#include <cstring>
-#include <cstdlib>
-#include <cstdio>
 #include <string>
 #include <sstream>
 using namespace std;
@@ -82,7 +79,7 @@ cacInBuff::int_type cacInBuff::underflow()
 {
   if (gptr() >= egptr())
   {
-    int leftover = min((long int)extra, (long int)(gptr() - eback()));
+    int leftover = min(extra, gptr() - eback());
     memmove(buff + (extra-leftover), gptr() - leftover, leftover);
 
     char *s = buff + extra;     // the string I'm reading in

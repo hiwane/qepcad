@@ -25,8 +25,12 @@ Step2: /* Failures from the SACLIB library. */
          {
          /*  Please note that this step is NOT portable since  we are assuming that 
              addresses can taken as integers. */
-         SWRITE("BACSTACK = "); GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
-         SWRITE("EACSTACK = "); GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
+         SWRITE("BACSTACK = "); 
+	 fprintf(stdout,"%p\n",va_arg(argPtr,char *));
+	 //GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
+         SWRITE("EACSTACK = "); 
+	 fprintf(stdout,"%p\n",va_arg(argPtr,char *));
+	 //GWRITE((int)va_arg(argPtr,char *)); SWRITE("\n");
          goto Exit;
          }
 

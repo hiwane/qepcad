@@ -26,6 +26,33 @@ Step1: /* Set up the system. */
        ARGSACLIB(argc,argv,&ac,&av);
        BEGINSACLIB((Word *)&argc);
        BEGINQEPCAD();
+
+
+       /* SWRITE("Begining test ...\n"); */
+       /* {  */
+       /* 	 Word L = NIL; */
+       /* 	 fprintf(stderr,"&L     = %p\n",&L); */
+       /* 	 L = PTRCOMP(&L,L); OWRITE(L); */
+       /* 	 fprintf(stderr,"--- %p\n",PTRFIRST(L)); */
+       /* 	 L = PTRCOMP(&L,L);  OWRITE(L); */
+       /* 	 fprintf(stderr,"--- %p %p\n",PTRFIRST(L),PTRFIRST(PTRRED(L))); */
+       /* 	 L = PTRCOMP(&L,L); OWRITE(L); */
+       /* 	 fprintf(stderr,"--- %p %p %p\n",PTRFIRST(L),PTRFIRST(PTRRED(L)),PTRFIRST(PTRRED(PTRRED(L)))); */
+	 
+       /* 	 SWRITE("\n\n"); */
+       /* 	 OWRITE(PTRRED(L)); */
+       /* 	 SWRITE("\n\n"); */
+
+       /* 	 fprintf(stderr,"pulled = %p\n",PTRFIRST(L)); */
+       /* 	 L = PTRRED(L); */
+       /* 	 fprintf(stderr,"pulled = %p\n",PTRFIRST(L)); */
+       /* 	 L = PTRRED(L); */
+       /* 	 fprintf(stderr,"pulled = %p\n",PTRFIRST(L)); */
+       /* 	 L = PTRRED(L); */
+       /* 	 if (L == NIL) fprintf(stderr,"List empty\n"); */
+       /* 	 else fprintf(stderr,"List non-empty\n"); */
+       /* } */
+
        init_SIGINT_handler(); /* A special handler for SIGINT is needed
                                  to shut down child processes. Also used
 			         for SIGTERM. */
@@ -52,6 +79,7 @@ Step3: /* Clean up the system. */
        ENDQEPCAD();
        ENDSACLIB(SAC_FREEMEM);
        delete GVContext;
+       free(av); /* Frees the array malloc'd by ARGSACLIB */
 
 Return: /* Prepare for return. */
        return 0;
