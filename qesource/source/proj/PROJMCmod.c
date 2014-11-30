@@ -13,6 +13,10 @@ We ignore equational constraints!
   \parm{P} is the "safe" half-way improved McCallum's projection of $A$.
 ======================================================================*/
 #include "qepcad.h"
+#include <iostream>
+#include <sstream>
+#include <cstdlib>
+using namespace std;
 
 Word QepcadCls::PROJMCmod(Word r, Word A)
 {
@@ -37,6 +41,15 @@ Step1: /* Obtain coefficients. */
 	 L = PLDCF(Ap1); 
 	 Lh = NIL;
 	 t = 0;
+
+	 /*-- TEST NEW --*/
+	 if (experimentalExtensionFlag)
+	 {
+	   bool qfc = qfrCheckNonVanishing(r-1,L,GVNA.W,GVNQFF.W,GVVL.W);
+	   if (qfc) continue;
+	 }
+	 /*-- END TEST NEW --*/
+
 	 if (!VERIFYCONSTSIGN(r-1,IPIP(r-1,ISIGNF(PLBCF(r-1,L)),L),1,GVNA.W)) {
 	   W = MPOLY(L,NIL,LIST1(LIST3(PO_LCO,0,A1)),PO_OTHER,PO_KEEP);
 	   P = COMP(W,P); 
@@ -44,7 +57,9 @@ Step1: /* Obtain coefficients. */
 	   t = 1; }
 	 
 	 /* If r = 2 OR r-1 is in free variable space, the leading coefficient is always enough! */
-	 if (t && (r == 2 || (PCMZERROR && r-1 <= GVNFV)))
+	 if (t && (r == 2 || (PCMZERROR && r-1 <= GVNFV))
+	     || (experimentalExtensionFlag && qfrCheckNonNullified(r,Ap1,GVNA.W,GVNQFF.W,GVVL.W))
+	     )
 	   t = 0;
 	 else if (t) {
 	   T1 = ACLOCK();
@@ -67,7 +82,8 @@ Step1: /* Obtain coefficients. */
 	     Word tf = 0;
 	     
 	     /* Test 1: identically non-zero */
-	     tf = tf || VERIFYCONSTSIGN(r-1,f,1,GVNA.W);
+	     //--ORIGINAL-- tf = tf || VERIFYCONSTSIGN(r-1,f,1,GVNA.W);
+	     tf = tf || (experimentalExtensionFlag && qfrCheckNonVanishing(r-1,f,GVNA.W,GVNQFF.W,GVVL.W));
 	     
 	     /* Test 2: of a level corresponding to a FULLDE or FULLDA quantifier */
 	     j = rp - GVNFV;
@@ -120,7 +136,6 @@ Step1: /* Obtain coefficients. */
 	   }
 	 }
 
-	 
 	 /* Handle the rest of the coefficients as needed. */
 	 i = 0;
 	 while (t) {
@@ -174,11 +189,6 @@ Return: /* Prepare for return. */
 }
 
 
-
-
-
-
-
 /* 	     QepcadCls Q; Word G; */
 /*  	     for(t = 0; t == 0 && Sp != NIL; Sp = RED(Sp)) */
 /*  	       if ((G = SYSSOLVECAD(r-1,FIRST(Sp),GVNA == NIL ? TRUE : GVNA.W,GVVL,Q)) != NIL)  */
@@ -201,5 +211,4 @@ Return: /* Prepare for return. */
 /* 		     P = COMP(W,P); */
 /* 		   } */
 /* 		 } */
-
 

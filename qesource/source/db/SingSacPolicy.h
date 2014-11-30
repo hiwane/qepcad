@@ -12,6 +12,11 @@ public:
     sac = new OriginalPolicy;
     sing = new SingularPolicy;
   }
+  ~SingSacPolicy() 
+  {
+    delete sing;
+    delete sac;
+  }
   void IPFAC(Word r, Word P, Word *s_, Word *c_, Word *L_)
   {
     if (r > 1)

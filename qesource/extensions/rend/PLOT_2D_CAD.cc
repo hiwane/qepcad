@@ -28,6 +28,7 @@ extern "C" {
 #include <fstream>
 #include <cmath>
 #include "rend.h"
+#include "../../source/db/unnamedpipe.h"
 static void longtostring(long A, char* S);
 
 /*###################################################################
@@ -47,7 +48,7 @@ void PLOT_2D_CAD(Word D, Word P, Word J,
       longtostring(getpid(),FIFO_NAME+11);
       int t = 1, first = 1;
       int wcount = 0;
-      ofstream out;
+      UnnamedPipe *pipePtr = NULL;
       
 /********************************************************************/
 Step1: /* Make sure at least the CAD of 1-space exists. Initialize. */
@@ -78,36 +79,34 @@ Step3: /* Write it. */
 	wcount++;
 	if (!first) {
 	  first = 0;
-	  out << "E" << endl;
-	  out.close();
-	  strcpy(RM_FIFO+3,FIFO_NAME);
-	  if (system(RM_FIFO))
-	    cerr << "Failed in call: " << RM_FIFO << endl; }
+	  pipePtr->out() << "E" << endl;
+	  delete pipePtr;
+	  pipePtr = NULL; }
 	else
 	  first = 0;
 
 	// Make the fifo.
-	FIFO_NAME[5] = 48 + (wcount %10);
+	pipePtr = new UnnamedPipe;
+	
 	char* qe = getenv("qe");
 	char call_plot[200];
 	strcpy(call_plot,qe);
 	strcpy(call_plot + strlen(call_plot),"/bin/ADJ2D_plot");
-	mode_t fifo_perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-	if (mkfifo( FIFO_NAME , fifo_perms ) == -1 && errno != EEXIST) {
-	  cerr << "Could not open FIFO." << endl;
-	  exit(1); }
-
+	
 	// Call the plotting program.
 	if (fork() == 0) {
-	  if (execlp(call_plot,call_plot,FIFO_NAME,NULL) < 0) {
+	  //close(pipePtr->fdout());
+	  pipePtr->closeOut();
+	  dup2(pipePtr->fdin(),0);
+	  if (execlp(call_plot,call_plot,NULL) < 0) {
 	    cerr << "Didn't successfully execl for plot." << endl;
 	    exit(1); } }
-
-	out.open(FIFO_NAME);
-	W.write_header(out); }
+	
+	pipePtr->closeIn();
+	W.write_header(pipePtr->out()); }
       
-      WRITE_PLOT(M,W, LAST(L), FIRST(L) , out);
-
+      WRITE_PLOT(M,W, LAST(L), FIRST(L) , pipePtr->out());
+      
 /********************************************************************/
 Step4: /* Write out info about current plot. */
       cout << endl;
@@ -192,12 +191,11 @@ Step5: /* Get command. */
   
 /********************************************************************/
 Return: /* Clean up and return. */
-      out << 'E';
-      out.close();
-      strcpy(RM_FIFO+3,FIFO_NAME);
-      if (system(RM_FIFO)) 
-	cerr << "Failed in call: " << RM_FIFO << endl;
-  
+      if (pipePtr != NULL)
+      {
+	pipePtr->out() << 'E';
+	delete pipePtr;
+      }
       return;
 }
 

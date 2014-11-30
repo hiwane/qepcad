@@ -15,6 +15,8 @@ void QFFWR(Word V, Word F)
        Word F1,F2,Fp,T;
 
 Step1: /* Classify the formula F. */
+       if (F == TRUE)  { SWRITE("1 = 1"); goto Return; }
+       if (F == FALSE) { SWRITE("1 = 0"); goto Return; }
        T = FIRST(F);
        if (T == OROP) goto Step3;
        if (T == ANDOP) goto Step3;

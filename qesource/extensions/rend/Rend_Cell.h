@@ -52,7 +52,7 @@ public:
   int array_index();       /* returns i such that 
 			      parent->child[i] is the cell  */
   void set_extents(Word J);
-  void out_descrip(Rend_Win &W, ofstream &out, Mapper &M);
+  void out_descrip(Rend_Win &W, ostream &out, Mapper &M);
   void out_descrip_ps(Rend_Win &W, ostream &out, Mapper &M);
   void out_descrip_ps_color(Rend_Win &W, ostream &out, Mapper &M);
   void out_descrip_ps_standard(Rend_Win &W, ostream &out, Mapper &M);

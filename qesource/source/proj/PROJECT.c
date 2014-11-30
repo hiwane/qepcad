@@ -67,6 +67,26 @@ Step4: /* Factor. */
              /*Int*/ TMIPLFAC[k - 1] = TMIPLFAC[k - 1] + Ths;
 
 StepX: /* Filter out factors that don't vanish given assumptions */
+       if (experimentalExtensionFlag)
+       {
+	 Word Rb = NIL;
+	 for(Word Rp = CINV(R); Rp != NIL; Rp = RED(Rp))
+	 {
+	   Word nextP = LELTI(FIRST(Rp),PO_POLY);
+	   bool qfc = qfrCheckNonVanishing(k-1,nextP,GVNA.W,GVNQFF.W,GVVL.W);
+	   if (!qfc)
+	   {	     
+	     Rb = COMP(FIRST(Rp),Rb);
+	   }
+	   else if (PCVERBOSE)
+	   {
+	     SWRITE("Found factor ");
+	     IPDWRITE(k-1,nextP,GVVL.W);
+	     SWRITE(" to be non-zero given assumptions.\n");
+	   }
+	 }
+	 R = Rb;
+       }
        if (false)
        {
 	 Word AssTmp = (GVNA == NIL) ? TRUE : CHANGEASSUMPTIONSLEVEL(GVNA.W,k-1,1);

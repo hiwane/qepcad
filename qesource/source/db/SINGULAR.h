@@ -6,7 +6,7 @@
 #define _SINGULAR_
 
 #include "qepcad.h"
-#include "unnamedpipe.h"
+#include "db/unnamedpipe.h"
 #include "db/CAServer.h"
 #include <sstream>
 #include <signal.h>

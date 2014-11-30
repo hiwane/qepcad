@@ -78,7 +78,7 @@ Word LIFTSRR2D(Word c, Word D, Word P)
   count = 0;
   while(OC != NIL && RED(OC) != NIL)
   {
-    SWRITE("DEB: "); debWRITEINTERVAL(FIRST(OC)); SWRITE(" : "); debWRITEINTERVAL(SECOND(OC)); SWRITE("\n");
+    //    SWRITE("DEB: "); debWRITEINTERVAL(FIRST(OC)); SWRITE(" : "); debWRITEINTERVAL(SECOND(OC)); SWRITE("\n");
     OT = LSICOMP(FIRST(OC),SECOND(OC));
     if (OT == 2 || OT == 0) {/* first contains second */
       count++;
@@ -185,17 +185,17 @@ Word LIFTSRR2D(Word c, Word D, Word P)
   S = CINV(S);
   prev = NIL;
   Sp = S;
-  SWRITE("DEBUG>>>\n");
+  //  SWRITE("DEBUG>>>\n");
   while(Sp != NIL) {
     ADV(Sp,&sor,&Sp);
     if (Sp == NIL) {
       next = NIL;
-      SWRITE("DEBUG: NIL\n"); 
+      //      SWRITE("DEBUG: NIL\n"); 
     }
     else {
       ADV(Sp,&nextc,&Sp);
       next = FIRST(SECOND(LELTI(nextc,SAMPLE))); 
-      SWRITE("DEBUG: "); RNWRITE(FIRST(SECOND(LELTI(nextc,SAMPLE)))); SWRITE(", "); RNWRITE(SECOND(SECOND(LELTI(nextc,SAMPLE)))); SWRITE("\n"); 
+      //      SWRITE("DEBUG: "); RNWRITE(FIRST(SECOND(LELTI(nextc,SAMPLE)))); SWRITE(", "); RNWRITE(SECOND(SECOND(LELTI(nextc,SAMPLE)))); SWRITE("\n"); 
 
     }
     s2 = CSSP(prev,next);
@@ -208,7 +208,7 @@ Word LIFTSRR2D(Word c, Word D, Word P)
     if (Sp != NIL)
       prev = SECOND(SECOND(LELTI(nextc,SAMPLE)));
   }
-  SWRITE(">>>DEBUG\n");
+  //  SWRITE(">>>DEBUG\n");
 
 
   

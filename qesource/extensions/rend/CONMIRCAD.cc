@@ -27,6 +27,10 @@ Step2: /* Get the section-section adjacencies. */
       SWRITE("Adjacency failed over cell ");
       OWRITE(LELTI(C,INDX));
       SWRITE("\n"); }
+    else if (Sol == NIL)
+    {
+      ; //I think I can just ignore things!
+    }
     else if (LENGTH(Sol) > 1) {
       SWRITE("Couldn't find unique adjacencies over ");
       OWRITE(LELTI(C,INDX));

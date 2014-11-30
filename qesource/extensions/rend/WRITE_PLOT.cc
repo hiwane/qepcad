@@ -13,7 +13,7 @@ Inputs
 #include "rend.h"
 #include "Mapper.h"
 
-void WRITE_PLOT(Rend_Cell &M, Rend_Win &W, Word l, Word r, ofstream& out)
+void WRITE_PLOT(Rend_Cell &M, Rend_Win &W, Word l, Word r, ostream& out)
 {
   Word i,j;
 

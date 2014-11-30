@@ -1,4 +1,5 @@
 /*************************************************************
+ ** NOTE: This got superceeded by GCWord.
  **
  **  gcmemloc.h
  **
@@ -12,50 +13,8 @@
 #ifndef _GCMEMLOC_
 #define _GCMEMLOC_
 
-/*************************************************************
- **  Includes
- *************************************************************/
-extern "C" {
-#include "saclib.h"
-	   }
+#include "../../source/saclib/gcword.h"
 
-
-class gcmemloc
-{
- public:
-  
-  Word W;
-
-  gcmemloc()
-  {
-    W = 0;
-    GCGLOBAL(&W);
-  }
-
-  gcmemloc(gcmemloc& L)
-  {
-    W = L.W;
-    GCGLOBAL(&W);
-  }
-
-  ~gcmemloc()
-  {
-    Word L,T;
-    Word* t,*w;
-
-    L = GCGLOBALS;
-    T = RED(L);
-    w = &W;
-
-    if ( w == (Word*) FIRST(L) )
-      GCGLOBALS = RED(L);
-    else{
-      while( w != (Word*) FIRST(T) ) {
-	L = RED(L); T = RED(T); }
-      SRED(L,RED(T)); }
-  
-  }
-};
-
+typedef GCWord gcmemloc;
 
 #endif /* _GCMEMLOC_ */

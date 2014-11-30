@@ -21,6 +21,7 @@ typedef map<string,CAServer*> ServerBase;
 class CAPolicy
 {
 public:
+  virtual ~CAPolicy() { }
   virtual void IPFAC(Word r, Word P, Word *s_, Word *c_, Word *L_) = 0;
   virtual Word IPRES(Word r, Word A, Word B) = 0;
   virtual Word IPDSCR(Word r, Word A) = 0;

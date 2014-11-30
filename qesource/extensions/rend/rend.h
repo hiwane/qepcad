@@ -58,7 +58,7 @@ Word SSILRCRI(Word a_,Word b_);
 void CONMIRCAD(Word D,Word P,Word J,Rend_Cell& M,QepcadCls &Q);
 void ADD_POINTS( Rend_Cell &C, Word p_index, Word x, Word L_);
 void FILL_2D( Rend_Cell &M, Rend_Win &W, Word e, Word L, Word P );
-void WRITE_PLOT(Rend_Cell &M, Rend_Win &W, Word l, Word r, ofstream &out);
+void WRITE_PLOT(Rend_Cell &M, Rend_Win &W, Word l, Word r, ostream &out);
 Word ZOOM_OUT(Rend_Cell &M, Rend_Win &W, Word xf,
 	      Word yf, Word N, Word P);
 Word CH_VIEW_WIN(Rend_Cell &M, Rend_Win &W, Word Xs, Word Xt,

@@ -3,8 +3,6 @@
 #include <fstream>
 #include "db/convenientstreams.h"
 
-void QEPCAD_ProcessRC(int argc, char **argv);
-
 /*====================================================================
                  main(argc,argv)
 
@@ -17,10 +15,9 @@ int main(int argc, char **argv)
 
 Step1: /* Set up the system. */
        GVContext = new QEPCADContext;
-       QEPCAD_ProcessRC(argc,argv);
        ARGSACLIB(argc,argv,&ac,&av);
        BEGINSACLIB((Word *)&argc);
-       BEGINQEPCAD();
+       BEGINQEPCAD(argc,argv);
 
 Step2: /* Read input, create CAD, write result */
        PRINTCAD2DBANNER();
@@ -34,28 +31,6 @@ Step3: /* Clean up the system. */
        STATSACLIB();
        ENDQEPCAD();
        ENDSACLIB(SAC_FREEMEM);
-       delete GVContext;
-
        return 0;
 }
 
-void QEPCAD_ProcessRC(int argc, char **argv)
-{
-  char *qepath = getenv("qe");
-  if (qepath == NULL) { FAIL("QEPCAD_ProcessRC","Environment variable qe not defined!"); }
-  string rcFileName = qepath + string("/default.qepcadrc");
-  ifstream rcin(rcFileName.c_str());
-  if (!rcin) { return; }
-  string name, tmp;
-  while(rcin)
-  {
-    slwcistream sin(rcin,slwcistream::skipleadingws);
-    if (!(sin >> name)) { continue; }
-    if (name == "SINGULAR")
-    {      
-      if (!(sin >> tmp)) { cerr << "Error reading SINGULAR path in " << rcFileName << "!" << endl; }
-      else { GVContext->SingularPath = tmp; }
-    }
-    
-  }
-}

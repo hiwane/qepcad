@@ -12,10 +12,10 @@
  ***************************************************************/
 #ifndef _UNNAMEDPIPE_
 #define _UNNAMEDPIPE_
-#include <cstring>
 #include <cstdlib>
 #include <cstdio>
 #include <unistd.h>
+#include <string.h>
 #include <iostream>
 #include <streambuf>
 using namespace std;
@@ -45,23 +45,24 @@ public:
   fdostream(int fd) : buff(fd), ostream(&buff) { }
 };
 
-static const int buffSize = 10;
-static const int extra = 4;
+static const int unpbuffSize = 10;
+static const int unpextra = 4;
 
 class fdinbuff : public streambuf
 {
+
 public:
-  char buff[buffSize];
+  char buff[unpbuffSize];
   int fileDes;
-  fdinbuff(int fd) { fileDes = fd; char *tmp = buff+extra; setg(tmp,tmp,tmp); }
+  fdinbuff(int fd) { fileDes = fd; char *tmp = buff+unpextra; setg(tmp,tmp,tmp); }
   int_type underflow()
   {
     if (gptr() >= egptr())
     {
-      int leftover = min((long int)extra, (long int)(gptr() - eback())), readSize;
-      memmove(buff + (extra-leftover), gptr() - leftover, leftover);
-      if ((readSize=read(fileDes, buff + extra, buffSize - extra)) <= 0) return EOF;
-      setg(buff + (extra-leftover), buff + extra, buff + (4+readSize));
+      int leftover = min((long int)unpextra, (long int)(gptr() - eback())), readSize;
+      memmove(buff + (unpextra-leftover), gptr() - leftover, leftover);
+      if ((readSize=read(fileDes, buff + unpextra, unpbuffSize - unpextra)) <= 0) return EOF;
+      setg(buff + (unpextra-leftover), buff + unpextra, buff + (4+readSize));
     }
     return *gptr();
   }
@@ -88,14 +89,22 @@ public:
   {    
     if (pipe(fd) == -1) { perror("Failed to create pipe!"); exit(1); }
     openmask[0] = openmask[1] = true;
-    _in = 0;
+    _in  = 0;
     _out = 0;
   }
   ~UnnamedPipe() { 
-    if (_in) { delete _in; }
-    if (openmask[0]) { close(fd[0]); } 
-    if (_out) { delete _out; } 
-    if (openmask[1]) { close(fd[1]); } 
+    if (_in) { 
+      delete _in; 
+    }
+    if (openmask[0]) { 
+      close(fd[0]); 
+    } 
+    if (_out) { 
+      delete _out; 
+    } 
+    if (openmask[1]) { 
+      close(fd[1]); 
+    } 
   }
 
   fdistream& in()  { if (!_in) _in = new fdistream(fd[0]); return *_in; }
@@ -104,10 +113,17 @@ public:
   int fdout() { return fd[1]; }
   int setStdinToPipe() { return dup2(fdin(),fileno(stdin)); }
   int setStdoutToPipe() { return dup2(fdout(),fileno(stdout)); }
+  void closeIn() { 
+    if (_in) { delete _in; _in = 0; }
+    if (openmask[0]) { close(fd[0]); openmask[0] = false; } 
+  }
   void closeOut() { 
     const char ts[2] = {EOF,'\n'};
     if (_out) { delete _out; _out = 0; }
-    if (openmask[1]) { write(fd[1],ts,2); close(fd[1]);  openmask[1] = false; }
+    if (openmask[1]) { 
+      //      write(fd[1],ts,2); 
+      close(fd[1]);  
+      openmask[1] = false; }
   }
 };
 

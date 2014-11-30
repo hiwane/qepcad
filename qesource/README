@@ -53,7 +53,14 @@ The ADJ2D_plot program is the rendering engine called up by
 QEPCADB's plot-2d-cad command.  Just change to the "plot2d"
 directory and type "make" to create it.  You may need to
 adjust some entries in the Makefile to match OpenGL and GLUT
-locations on your system.
+locations on your system.  Note that rendering remotely (i.e.
+via ssh tunelling) may not work, while local rendering does.
+For me, setting the environment variable LIBGL_ALWAYS_INDIRECT
+if remote sessions fixed the problem.  E.g.
+
+  export LIBGL_ALWAYS_INDIRECT=1
+
+If you're having the problem, give this fix a try!
 
 Directories
 -----------

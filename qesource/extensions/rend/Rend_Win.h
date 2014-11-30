@@ -59,7 +59,7 @@ public:
   int SPEC_RNFLOR(Word a);
   int map_x(Word b);
   int map_y(Word b);
-  void write_header(ofstream &out);
+  void write_header(ostream &out);
   Word get_lociva(Rend_Cell &M);
 };
 

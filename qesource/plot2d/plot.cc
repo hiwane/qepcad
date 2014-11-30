@@ -96,12 +96,12 @@ public:
 /*****************************************************************
  ******  GLOBALS
  ******************************************************************/
-pthread_mutex_t M;
+pthread_mutex_t M,F;
 vector<CADELT*> CE;
 bool newdata = true;
 CADColors Colors;
 string name;
-ifstream *inp;
+istream *inp;
 int d1,d2;
 
 /*****************************************************************
@@ -127,23 +127,22 @@ void* readdata(void *x)
 	p->read(in);
 	E.push_back(p); }
       else if (c == 'F') { /******* Refresh it! **************/
+	pthread_mutex_lock(&F);
+	newdata = true;
+	pthread_mutex_unlock(&F);
 	pthread_mutex_lock(&M);
 	swap(CE,E);
-	newdata = true;
 	pthread_mutex_unlock(&M);
 	for(int i = 0; i < E.size(); i++) delete E[i];
 	E.clear(); }
       else if (c == 'E') { /******* Exit! *******************/
-	inp->close();
 	return 0;
       }
       else { cerr << "Unknown graphics command!" << endl; exit(1); }
     }
 
     return 0;
-    inp->close();
-    inp->open(name.c_str());
-    
+   
   }while(1);
   return 0;
 }
@@ -162,13 +161,26 @@ void display()
 }
 void  idle(void)
 {
-  pthread_mutex_lock(&M);
+  static int i = 0;
+  ++i;
+  if(i % 100000 == 0) cerr << "10K...";
+  pthread_mutex_lock(&F);
   if (newdata) {
-    glutPostRedisplay();
-    newdata = false; }
-  pthread_mutex_unlock(&M);  
+      glutPostRedisplay();
+      newdata = false; }
+  pthread_mutex_unlock(&F);  
 }
 
+// I'm using this instead of and "idle" function
+void  checkForChanges(int t) 
+{
+  pthread_mutex_lock(&F);
+  if (newdata) {
+      glutPostRedisplay();
+      newdata = false; }
+  pthread_mutex_unlock(&F);  
+  glutTimerFunc(30,checkForChanges,0);              	
+}
 void reshape(GLsizei w, GLsizei h)
 {
    glViewport(0, 0, w, h);
@@ -184,29 +196,11 @@ void reshape(GLsizei w, GLsizei h)
  ******************************************************************/
 int main(int argc, char* argv[])
 {
-  
-  /***************************************
-  ** Check for argument given!
-  ****************************************/
-  if (argc < 2) {
-    cerr << "No arguments given.  A pipe name is required." << endl;
-    exit(1); }
-  name = argv[1];
-  
-  /***************************************
-  ** Attempt to open input pipe.
-  ****************************************/
-  char B[10];
-  ifstream in;
-#if (__GNUC__ > 2)
-  in.rdbuf()->pubsetbuf(B,1); // set read to unbuffered
-#endif
-  in.open(argv[1]);
-  if (!in) {
-    cerr << "Couldn't open input pipe." << endl;
-    exit(1); }
-  inp = &in;
-  
+  //char B[11] = {'\0'};
+  //cin.rdbuf()->pubsetbuf(B,1);
+  inp = &cin;
+  istream &in = cin;
+
   /***************************************
   ** read in window size.  Window is not allowed to be larger than
   ** 1000x1000, and the arrays winX and winY are defined to contain
@@ -243,18 +237,20 @@ int main(int argc, char* argv[])
   glPointSize(2);
   glLineWidth(2);
   glutDisplayFunc(display);
-  glutIdleFunc(idle);
+  //  glutIdleFunc(idle); <-- I removed this because it's simply called too often
   glutReshapeFunc(reshape);
 
   // CREATE MUTEX
-  int ecm = pthread_mutex_init(&M,NULL);
-  if (ecm) { cerr << "Mutex could not be created!" << endl; exit(1); }
+  int ecmM = pthread_mutex_init(&M,NULL);
+  int ecmF = pthread_mutex_init(&F,NULL);
+  if (ecmM || ecmF) { cerr << "Mutex could not be created!" << endl; exit(1); }
   
   // CREATE THREAD
   pthread_t t;
   int ect = pthread_create(&t,0,readdata,0);
   if (ect) { cerr << "Thread could not be created!" << endl; exit(1); }
-  
+
+  glutTimerFunc(30,checkForChanges,0);  
   glutMainLoop();
   return 0;
 }

@@ -228,6 +228,7 @@ sysolve/LBMIPL.o \
 sysolve/LOSETSBF.o \
 sysolve/LPSILB.o \
 sysolve/PRINTCOEFFSYSTEM.o \
+sysolve/QFRCALLS.o \
 sysolve/SIMPLIFYSYS.o \
 sysolve/SIMPLIFYSYSLIST.o \
 sysolve/SYSSOLVE.o \
@@ -451,7 +452,7 @@ opt:		override CC = $(CCo)
 opt:		$(DEPENDENCIESo)
 		ranlib $(LIB)
 		@echo Linking the optimized program......
-		$(CCo) $(FLAGSo) $(INCLUDES) saclib/GCSI.c \
+		$(CCo) $(FLAGSo) $(INCLUDES) saclib/GCSI.c saclib/FAIL.c \
 			$(LIB) $(EXTLIBS) $(LIB) $(EXTLIBS) -o $(EXE)
 
 
@@ -460,7 +461,7 @@ deb:		override CC = $(CCd)
 deb:		$(DEPENDENCIESd)
 		ranlib $(LIBD)
 		@echo Linking the debugged program......
-		$(CCd) $(FLAGSd) $(INCLUDES) saclib/GCSI.c \
+		$(CCd) $(FLAGSd) $(INCLUDES) saclib/GCSI.c saclib/FAIL.c \
 			 $(LIBD) $(EXTLIBSD) $(LIBD)  $(EXTLIBSD) -o $(EXED) #\
 			#/home/wcbrown/Downloads/duma_2_4_27/libduma.a -lpthread
 

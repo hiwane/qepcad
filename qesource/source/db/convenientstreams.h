@@ -54,12 +54,13 @@ public:
  * cacIstream - Comments and continuations istream, 
  * i.e. # and \\n mean what you think
  ***************************************************************/
-static const int buffSize = 10;
-static const int extra = 4;
+
 
 class cacInBuff : public streambuf
-{
+{  
 protected:
+  static const int buffSize = 10;
+  static const int extra = 4;
   char buff[buffSize];
   istream *trueIn;
 public:

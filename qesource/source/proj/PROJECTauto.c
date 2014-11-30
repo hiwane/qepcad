@@ -47,6 +47,28 @@ Step3: /* Project. */
 Step4: /* Factor. */
        R = IPLFAC(k - 1,J_k1);
 
+StepX: /* Filter out factors that don't vanish given assumptions */
+       if (experimentalExtensionFlag)
+       {
+	 Word Rb = NIL;
+	 for(Word Rp = CINV(R); Rp != NIL; Rp = RED(Rp))
+	 {
+	   Word nextP = LELTI(FIRST(Rp),PO_POLY);
+	   bool qfc = qfrCheckNonVanishing(k-1,nextP,GVNA.W,GVNQFF.W,GVVL.W);
+	   if (!qfc)
+	   {	     
+	     Rb = COMP(FIRST(Rp),Rb);
+	   }
+	   else if (PCVERBOSE)
+	   {
+	     SWRITE("Found factor ");
+	     IPDWRITE(k-1,nextP,GVVL.W);
+	     SWRITE(" to be non-zero given assumptions.\n");
+	   }
+	 }
+	 R = Rb;
+       }
+
 Step5: /* Append. */
        if (PCPROPEC)
 	  APPENDEC(P,k-1,R,&P,&F);

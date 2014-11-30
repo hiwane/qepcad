@@ -31,7 +31,7 @@ void GCSI(Word s, char *EACSTACK)
 Step1: /* Setup. */
 	  if (GCM == 1) {
          SWRITE("\nThe "); GWRITE(GCC+1); 
-         SWRITE("--th garbage collection....");
+         SWRITE("--th garbage collection....\n");
        }
        T1 = CLOCK();
 

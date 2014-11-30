@@ -96,7 +96,7 @@ Step2: /* Process the command. */
        case 64: FALSECELLWRITE(GVPC); break;
        case 69: PRDSTACK(); break;
        case 71: DISP2DCAD(GVPC,GVPF,GVPJ); break;
-       case 72: /*ADJ_2D_TEST(GVPC,GVPF,GVPJ); */ HATEST(GVPC,GVPF,GVPJ); break;
+       case 72: /*ADJ_2D_TEST(GVPC,GVPF,GVPJ); */ /* HATEST(GVPC,GVPF,GVPJ); */ break;
        case 73: PCCHFLAG = 1; break;
        case 74: PCVERBOSE = (CREADB() == 'y') ? 1 : 0; break;
        case 75: t = IREAD(); SIMPLE_CAD_INFO(GVPC,GVPF,GVNFV,t); break;

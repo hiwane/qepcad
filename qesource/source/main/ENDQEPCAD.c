@@ -14,6 +14,7 @@ void ENDQEPCAD()
     delete p->second;
   GVSB.clear();
   delete GVCAP;
+  delete GVContext;
 
 Return: /* Prepare for return. */
        return;

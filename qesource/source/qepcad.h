@@ -40,7 +40,7 @@ void APPENDEC(Word P, Word k, Word R, Word *Ps_, Word *F_);
 void ATOMFLWR(Word N, Word V, Word A);
 void ATOMFRDR(Word V, Word *F_, Word *t_);
 void ATOMFWR(Word V, Word A);
-void BEGINQEPCAD();
+void BEGINQEPCAD(int &argc, char**& argv);
 Word CAPTURE(Word P, Word M);
 Word CATOMQFF(Word F);
 void CATTRNRDR(Word *V_, Word *t_);
@@ -223,6 +223,8 @@ void QFFLPWR(Word N, Word V, Word F);
 void QFFLWR(Word N, Word V, Word F);
 void QFFRDR(Word V, Word *F_, Word *t_);
 void QFFWR(Word V, Word F);
+bool qfrCheckNonVanishing(BDigit r, Word P, Word A, Word F, Word V);
+bool qfrCheckNonNullified(BDigit r, Word P, Word A, Word F, Word V);
 void QFRDR(Word *q_, Word *t_);
 void QFWR(Word q);
 Word RCFAFC(Word b);
@@ -495,6 +497,7 @@ extern Word PCVERBOSE;/* Verbose mode: 0 means not verbose, 1 means verbose 06/1
 /* ------------------------------------------------------------------------*/
 /*                       Program control                                   */
 /* ------------------------------------------------------------------------*/
+extern int experimentalExtensionFlag;
 extern  Word PCIGS;       /* Implicant Generation Strategy */
 extern  Word PCDBUSE;     /* 'y' if Databases are used 'n' otherwise */
 extern  Word PCDBLIMIT;   /* Limit for Database Entry */

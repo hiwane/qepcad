@@ -181,7 +181,7 @@ Word Rend_Cell::description(Rend_Win &W)
  **  out_descrip
  **  
  *************************************************************/
-void Rend_Cell::out_descrip(Rend_Win &W,ofstream &out,Mapper &M)
+void Rend_Cell::out_descrip(Rend_Win &W,ostream &out,Mapper &M)
 {
   Word p,x,y,L,Lp,l,l1,l2,l3,x1,x2,y1,y2;
 

@@ -227,7 +227,7 @@ Word Rend_Win::map_y(Word b)
   return r;
 }
 
-void Rend_Win::write_header(ofstream &out)
+void Rend_Win::write_header(ostream &out)
 {
   out << pixdim.x << "\t" << pixdim.y << endl << endl;
 }
