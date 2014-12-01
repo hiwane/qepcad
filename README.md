@@ -12,6 +12,17 @@ Cylindrical Algebraic Decomposition
 ============================================================
 ```
 
+# Install
+
+```sh
+% git clone https://github.com/hiwane/qepcad.git
+% cd qepcad
+% make
+```
+- set environment variable `qe` to `${qecad}/qesource`
+
+
+# Example
 ```
 =======================================================
                 Quantifier Elimination                 
