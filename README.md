@@ -1,6 +1,8 @@
 # QEPCAD B
 
-mirror of QEPCAD B: http://www.usna.edu/Users/cs/qepcad
+mirror of QEPCAD B: 
+- http://www.usna.edu/Users/cs/qepcad
+- http://www.usna.edu/CS/qepcadweb/B/QEPCAD.html
 
 ```
 ============================================================
